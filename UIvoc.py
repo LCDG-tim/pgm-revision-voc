@@ -60,15 +60,17 @@ class App:
         # set language
         self.french_first = False
 
-        # pricipal frame
+        # set main frame
         self.master_frame = tk.Frame(self.window, bg="#777777")
 
-        # fenêtre de gauche
+        # =====================================================================
+        # set left window
         self.left_frame = tk.Frame(self.master_frame, bg="#777777", padx=20)
 
-        # liste de base
+        # set default list studied
         self.liste_cible = 0.01
 
+        # set & display the currently list studied
         self.list_label = tk.Label(
                 self.left_frame,
                 font=("Helvetica", 20),
@@ -76,6 +78,7 @@ class App:
             )
         self.list_label.pack(fill=tk.X)
 
+        # set & display the text of the vocabulary word asked
         self.first_entry = tk.Label(
                 self.left_frame,
                 bg="#2020A5",
@@ -83,6 +86,7 @@ class App:
             )
         self.first_entry.pack(fill=tk.X)
 
+        # set & display the entry to let the users try to complete
         self.second_entry = tk.Entry(
                 self.left_frame,
                 bg="#20A520",
@@ -91,12 +95,14 @@ class App:
             )
         self.second_entry.pack(fill=tk.X)
 
+        # set & display the text to see if the second entry is True or False
         self.verif_label = tk.Label(
                 self.left_frame,
                 font=("Helvetica", 20)
             )
         self.verif_label.pack(fill=tk.X)
 
+        # set & display the text to let the users have a solutio
         self.solut_label = tk.Label(
                 self.left_frame,
                 bg="#777777",
@@ -104,11 +110,15 @@ class App:
             )
         self.solut_label.pack(fill=tk.X)
 
+        # display the left frame ont the left
         self.left_frame.grid(row=0, column=0, sticky=tk.W)
         # =====================================================================
+
         # =====================================================================
+        # set the right_frame to put the button
         self.button_frame = tk.Frame(self.master_frame)
 
+        # set & display the button to change the language asked and answered
         self.language_button = tk.Button(
                 self.button_frame,
                 text="change language to {}".format(
@@ -119,6 +129,7 @@ class App:
             )
         self.language_button.pack(fill=tk.X)
 
+        # set & display the button to open
         self.list_selector_button = tk.Button(
                 self.button_frame,
                 text="choice a list",
