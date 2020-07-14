@@ -262,6 +262,7 @@ class App:
         # =====================================================================
 
     def list_app(self) -> None:
+        # config window
         self.windowl = tk.Tk()
         self.windowl.geometry("200x650+100+20")
         self.windowl.minsize(200, 650)
@@ -272,15 +273,19 @@ class App:
         self.windowl.config(bg="#777777")
         self.windowl.config(menu=self.menu_bar)
 
+        # set master frame
         self.masterl_frame = tk.Frame(self.windowl, bg="#777777")
 
+        # set the left and right frame
         self.leftl_frame = tk.Frame(self.masterl_frame, bg="#777777")
         self.rightl_frame = tk.Frame(self.masterl_frame, bg="#777777")
 
+        # create the button to select the list
         for i, j in enumerate(voc().keys()):
             self.test = List_button(self, i, j).button
             self.test.pack(fill=tk.X, padx=3, pady=3)
 
+        # display the two frame
         self.leftl_frame.grid(
                 row=0,
                 column=0,
@@ -293,8 +298,10 @@ class App:
                 sticky=tk.W
             )
 
+        # display the master frame
         self.masterl_frame.pack(expand=tk.YES)
 
+        # lauch the window
         self.windowl.mainloop()
 
     def quit_windowl(self) -> None:
