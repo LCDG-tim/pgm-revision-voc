@@ -121,7 +121,7 @@ class App:
         # set & display the button to change the language asked and answered
         self.language_button = tk.Button(
                 self.button_frame,
-                text="change language to {}".format(
+                text="switch language to {}".format(
                         ("French", "German")[self.french_first]
                     ),
                 font=("Helvetica", 20),
@@ -129,7 +129,7 @@ class App:
             )
         self.language_button.pack(fill=tk.X)
 
-        # set & display the button to open
+        # set & display the button to open the list of list of vocabulary
         self.list_selector_button = tk.Button(
                 self.button_frame,
                 text="choice a list",
@@ -138,6 +138,7 @@ class App:
             )
         self.list_selector_button.pack(fill=tk.X)
 
+        # set & display the button to change the word asked
         self.next_word = tk.Button(
                 self.button_frame,
                 text="Next word",
@@ -146,6 +147,8 @@ class App:
             )
         self.next_word.pack(fill=tk.X)
 
+        # set & display the button to verify if the word in the second entry
+        # is True or False
         self.verif_button = tk.Button(
                 self.button_frame,
                 text="Verification",
@@ -154,6 +157,7 @@ class App:
             )
         self.verif_button.pack(fill=tk.X)
 
+        # set & display the Scale for set or unset the random list mode
         self.only_a_list = tk.Scale(
                 self.button_frame,
                 orient="horizontal",
@@ -164,6 +168,8 @@ class App:
             )
         self.only_a_list.pack(expand=tk.YES, fill=tk.X)
 
+        # set & display the Button to display the solution, the translation of
+        # the word
         self.solut_button = tk.Button(
                 self.button_frame,
                 text="solution",
@@ -172,6 +178,7 @@ class App:
             )
         self.solut_button.pack(expand=tk.YES)
 
+        # set & display the button to quit the page
         self.quit_button = tk.Button(
                 self.button_frame,
                 text="Quit the page",
@@ -180,72 +187,90 @@ class App:
             )
         self.quit_button.pack(expand=tk.YES)
 
+        # display the right button frame
         self.button_frame.grid(row=0, column=1, sticky=tk.W)
-
-        # =====================================================================
         # =====================================================================
 
+        # =====================================================================
+        # set the menu bar of the window
         self.menu_bar = tk.Menu(self.master_frame)
 
+        # set the first menu
         self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
 
+        # add a command to the first menu to quit the page
         self.file_menu.add_command(
                 label="quitter",
                 command=self.quit_window
             )
 
+        # add the menu to the menu bar
         self.menu_bar.add_cascade(
                 label="fichier",
                 menu=self.file_menu
             )
 
+        # set a second menu with all the command which can be used in the App
         self.command_menu = tk.Menu(
                 self.window,
                 tearoff=0
             )
 
+        # add a command to switch language
         self.command_menu.add_command(
-                label="change language",
+                label="switch language",
                 command=self.change_language
             )
 
+        # add a command to change word
         self.command_menu.add_command(
                 label="next word",
                 command=self.change_word
             )
 
+        # add a command to verify the second entry
         self.command_menu.add_command(
                 label="verification",
                 command=self.verif
             )
 
+        # add a command to give the solution, the translation
         self.command_menu.add_command(
                 label="solution",
                 command=self.give_solution
             )
 
+        # add the menu to the menu bar
         self.menu_bar.add_cascade(
                 label="commands",
                 menu=self.command_menu
             )
+        # =====================================================================
 
+        # =====================================================================
+        # display the main frame
         self.master_frame.pack(expand=tk.YES)
 
+        # add the menu bar to the window
         self.window.config(menu=self.menu_bar)
 
+        # put a random word
         self.change_word()
 
+        # launch the page
         self.window.mainloop()
+        # =====================================================================
 
     def list_app(self) -> None:
         self.windowl = tk.Tk()
-        self.windowl.geometry("1080x720+20+0")
+        self.windowl.geometry("200x650+100+20")
         self.windowl.minsize(200, 650)
         self.windowl.maxsize(
                 self.windowl.winfo_screenwidth(),
                 self.windowl.winfo_screenheight()
             )
         self.windowl.config(bg="#777777")
+        self.windowl.config(menu=self.menu_bar)
 
         self.masterl_frame = tk.Frame(self.windowl, bg="#777777")
 
@@ -315,7 +340,7 @@ class App:
 
     def change_language(self) -> None:
         self.french_first = not(self.french_first)
-        self.language_button["text"] = "change language to {}".format(
+        self.language_button["text"] = "switch language to {}".format(
                         ("French", "German")[self.french_first]
                     )
         a = self.question
