@@ -110,6 +110,19 @@ class App:
             )
         self.solut_label.pack(fill=tk.X)
 
+        # set the default score and the number of word
+        self.good_replies = 0
+        self.number_words = 0
+
+        # set & display the button to setup a score of right replies
+        self.score_label = tk.Label(
+                self.left_frame,
+                bg="#777777",
+                text="",
+                font=("Helvetica", 20)
+            )
+        self.score_label.pack(fill=tk.X)
+
         # display the left frame ont the left
         self.left_frame.grid(row=0, column=0, sticky=tk.W)
         # =====================================================================
@@ -117,6 +130,13 @@ class App:
         # =====================================================================
         # set the right_frame to put the button
         self.button_frame = tk.Frame(self.master_frame)
+
+        # set & display the label to advert the goal of the right frame
+        self.advert_label = tk.Label(
+                self.button_frame,
+                text="List of Button"
+            )
+        self.advert_label.pack(fill=tk.X)
 
         # set & display the button to change the language asked and answered
         self.language_button = tk.Button(
@@ -138,6 +158,17 @@ class App:
             )
         self.list_selector_button.pack(fill=tk.X)
 
+        # set & display the Scale for set or unset the random list mode
+        self.only_a_list = tk.Scale(
+                self.button_frame,
+                orient="horizontal",
+                from_=0,
+                to=1,
+                font=("Helvetica", 20),
+                label="Only a list"
+            )
+        self.only_a_list.pack(fill=tk.X)
+
         # set & display the button to change the word asked
         self.next_word = tk.Button(
                 self.button_frame,
@@ -157,17 +188,6 @@ class App:
             )
         self.verif_button.pack(fill=tk.X)
 
-        # set & display the Scale for set or unset the random list mode
-        self.only_a_list = tk.Scale(
-                self.button_frame,
-                orient="horizontal",
-                from_=0,
-                to=1,
-                font=("Helvetica", 20),
-                label="Only a list"
-            )
-        self.only_a_list.pack(expand=tk.YES, fill=tk.X)
-
         # set & display the Button to display the solution, the translation of
         # the word
         self.solut_button = tk.Button(
@@ -176,7 +196,16 @@ class App:
                 font=("Helvetica", 20),
                 command=self.give_solution
             )
-        self.solut_button.pack(expand=tk.YES)
+        self.solut_button.pack(fill=tk.X)
+
+        # set & display the button to add 1 at the score
+        self.score_button = tk.Button(
+                self.button_frame,
+                text="add score",
+                font=("Helvetica", 20),
+                command=self.add_score
+            )
+        self.score_button.pack(fill=tk.X)
 
         # set & display the button to quit the page
         self.quit_button = tk.Button(
@@ -185,7 +214,7 @@ class App:
                 font=("Helvetica", 20),
                 command=self.quit_window
             )
-        self.quit_button.pack(expand=tk.YES)
+        self.quit_button.pack(fill=tk.X)
 
         # display the right button frame
         self.button_frame.grid(row=0, column=1, sticky=tk.W)
@@ -220,6 +249,12 @@ class App:
         self.command_menu.add_command(
                 label="switch language",
                 command=self.change_language
+            )
+
+        # add a command to open the list selector
+        self.command_menu.add_command(
+                label="chose a specific list",
+                command=self.list_app
             )
 
         # add a command to change word
@@ -304,6 +339,41 @@ class App:
         # lauch the window
         self.windowl.mainloop()
 
+    def score_manage(self) -> None:
+        self.windows = tk.Tk()
+        self.windows.geometry("400x450+100+20")
+        self.windows.minsize(200, 650)
+        self.windows.maxsize(
+                self.windows.winfo_screenwidth(),
+                self.windows.winfo_screenheight()
+            )
+        self.windows.config(bg="#777777")
+        self.windows.config(menu=self.menu_bar)
+
+        # set master frame
+        self.masters_frame = tk.Frame(self.windows, bg="#777777")
+
+        self.current_score = tk.Label(
+                self.masters_frame,
+                text="{} / {} or {} % good replies".format(
+                        self.good_replies,
+                        self.number_words,
+                        round(self.good_replies * 100 / self.number_words, 1)
+                    )
+            )
+        self.current_score.pack(fill=tk.X)
+
+        self.good_label = tk.Label(
+                self.masters_frame,
+
+            )
+
+        # display the master frame
+        self.masterl_frame.pack(expand=tk.YES)
+
+        # lauch the window
+        self.windowl.mainloop()
+
     def quit_windowl(self) -> None:
         self.windowl.quit()
         self.windowl.destroy()
@@ -315,6 +385,14 @@ class App:
         else:
             self.verif_label["text"] = "Faux"
             self.verif_label["bg"] = "#A52020"
+
+    def add_score(self) -> None:
+        self.good_replies += 1
+        self.score_label["text"] = "{} / {} or {} % of right replies".format(
+                        self.good_replies,
+                        self.number_words,
+                        round(self.good_replies * 100 / self.number_words, 1)
+                    )
 
     def choix(self) -> tuple:
         if not self.only_a_list.get():
@@ -328,6 +406,12 @@ class App:
         self.window.destroy()
 
     def change_word(self) -> None:
+        self.number_words += 1
+        self.score_label["text"] = "{} / {} or {} % of right replies".format(
+                        self.good_replies,
+                        self.number_words,
+                        round(self.good_replies * 100 / self.number_words, 1)
+                    )
         # il nettoye le champs
         self.second_entry.delete(0, tk.END)
         # il choisie le nouveau couple de vocabulaire
