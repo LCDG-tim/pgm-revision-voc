@@ -59,6 +59,8 @@ class App:
 
         # set language
         self.french_first = False
+        # set main font
+        self.main_font = ("Helvetica", 20)
 
         # set main frame
         self.master_frame = tk.Frame(self.window, bg="#777777")
@@ -73,7 +75,7 @@ class App:
         # set & display the currently list studied
         self.list_label = tk.Label(
                 self.left_frame,
-                font=("Helvetica", 20),
+                font=self.main_font,
                 text="list studied : {}".format(self.liste_cible)
             )
         self.list_label.pack(fill=tk.X)
@@ -82,7 +84,7 @@ class App:
         self.first_entry = tk.Label(
                 self.left_frame,
                 bg="#2020A5",
-                font=("Helvetica", 20)
+                font=self.main_font
             )
         self.first_entry.pack(fill=tk.X)
 
@@ -91,14 +93,14 @@ class App:
                 self.left_frame,
                 bg="#20A520",
                 justify="center",
-                font=("Helvetica", 20)
+                font=self.main_font
             )
         self.second_entry.pack(fill=tk.X)
 
         # set & display the text to see if the second entry is True or False
         self.verif_label = tk.Label(
                 self.left_frame,
-                font=("Helvetica", 20)
+                font=self.main_font
             )
         self.verif_label.pack(fill=tk.X)
 
@@ -106,7 +108,7 @@ class App:
         self.solut_label = tk.Label(
                 self.left_frame,
                 bg="#777777",
-                font=("Helvetica", 20)
+                font=self.main_font
             )
         self.solut_label.pack(fill=tk.X)
 
@@ -119,7 +121,7 @@ class App:
                 self.left_frame,
                 bg="#777777",
                 text="",
-                font=("Helvetica", 20)
+                font=self.main_font
             )
         self.score_label.pack(fill=tk.X)
 
@@ -144,7 +146,7 @@ class App:
                 text="switch language to {}".format(
                         ("French", "German")[self.french_first]
                     ),
-                font=("Helvetica", 20),
+                font=self.main_font,
                 command=self.change_language
             )
         self.language_button.pack(fill=tk.X)
@@ -153,7 +155,7 @@ class App:
         self.list_selector_button = tk.Button(
                 self.button_frame,
                 text="choice a list",
-                font=("Helvetica", 20),
+                font=self.main_font,
                 command=self.list_app
             )
         self.list_selector_button.pack(fill=tk.X)
@@ -164,7 +166,7 @@ class App:
                 orient="horizontal",
                 from_=0,
                 to=1,
-                font=("Helvetica", 20),
+                font=self.main_font,
                 label="Only a list"
             )
         self.only_a_list.pack(fill=tk.X)
@@ -173,7 +175,7 @@ class App:
         self.next_word = tk.Button(
                 self.button_frame,
                 text="Next word",
-                font=("Helvetica", 20),
+                font=self.main_font,
                 command=self.change_word
             )
         self.next_word.pack(fill=tk.X)
@@ -183,7 +185,7 @@ class App:
         self.verif_button = tk.Button(
                 self.button_frame,
                 text="Verification",
-                font=("Helvetica", 20),
+                font=self.main_font,
                 command=self.verif
             )
         self.verif_button.pack(fill=tk.X)
@@ -193,7 +195,7 @@ class App:
         self.solut_button = tk.Button(
                 self.button_frame,
                 text="solution",
-                font=("Helvetica", 20),
+                font=self.main_font,
                 command=self.give_solution
             )
         self.solut_button.pack(fill=tk.X)
@@ -202,7 +204,7 @@ class App:
         self.score_button = tk.Button(
                 self.button_frame,
                 text="add score",
-                font=("Helvetica", 20),
+                font=self.main_font,
                 command=self.add_score
             )
         self.score_button.pack(fill=tk.X)
@@ -211,7 +213,7 @@ class App:
         self.quit_button = tk.Button(
                 self.button_frame,
                 text="Quit the page",
-                font=("Helvetica", 20),
+                font=self.main_font,
                 command=self.quit_window
             )
         self.quit_button.pack(fill=tk.X)
@@ -306,7 +308,6 @@ class App:
                 self.windowl.winfo_screenheight()
             )
         self.windowl.config(bg="#777777")
-        self.windowl.config(menu=self.menu_bar)
 
         # set master frame
         self.masterl_frame = tk.Frame(self.windowl, bg="#777777")
@@ -342,13 +343,12 @@ class App:
     def score_manage(self) -> None:
         self.windows = tk.Tk()
         self.windows.geometry("400x450+100+20")
-        self.windows.minsize(200, 650)
+        self.windows.minsize(400, 450)
         self.windows.maxsize(
                 self.windows.winfo_screenwidth(),
                 self.windows.winfo_screenheight()
             )
         self.windows.config(bg="#777777")
-        self.windows.config(menu=self.menu_bar)
 
         # set master frame
         self.masters_frame = tk.Frame(self.windows, bg="#777777")
