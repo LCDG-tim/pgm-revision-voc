@@ -136,7 +136,9 @@ class App:
         # set & display the label to advert the goal of the right frame
         self.advert_label = tk.Label(
                 self.button_frame,
-                text="List of Button"
+                text="List of Button",
+                bg="#777777",
+                font=self.main_font
             )
         self.advert_label.pack(fill=tk.X)
 
@@ -285,6 +287,17 @@ class App:
         # =====================================================================
 
         # =====================================================================
+        # test score manage
+        self.test = tk.Button(
+                self.button_frame,
+                text="test",
+                font=self.main_font,
+                command=self.score_manage
+            )
+        self.test.pack(fill=tk.X)
+        # =====================================================================
+
+        # =====================================================================
         # display the main frame
         self.master_frame.pack(expand=tk.YES)
 
@@ -365,15 +378,7 @@ class App:
             )
         self.current_score.pack(fill=tk.X)
 
-        # set and display the number of good replies enumerate
-        self.good_label = tk.Label(
-                self.masters_frame,
-                font=self.main_font,
-                text="good replies : {}".format(self.good_replies)
-            )
-        self.good_label.pack(fill=tk.X)
-
-        # set and display the number of words which are asked
+        # set & display the number of words which are asked
         self.number_label = tk.Label(
                 self.masters_frame,
                 text="number of words asked : {}".format(
@@ -381,12 +386,50 @@ class App:
                     ),
                 font=self.main_font
             )
+        self.number_label.pack(fill=tk.X)
+
+        # set the frame with the add 1 remove 1 good replied
+        self.good_frame = tk.Frame(self.masters_frame)
+
+        # set & display the number of good replies enumerate
+        self.good_label = tk.Label(
+                self.good_frame,
+                font=self.main_font,
+                text="good replies : {}".format(self.good_replies)
+            )
+        self.good_label.grid(row=0, sticky=tk.W)
+
+        # set and display the button to remove 1 good reply
+        self.remove_good_rep_button = tk.Button(
+                self.good_frame,
+                font=self.main_font,
+                text="- 1",
+                command=self.remove_good_reply
+            )
+        self.remove_good_rep_button.grid(row=1, column=1, sticky=tk.W)
+
+        # set & display the button to add 1 good reply
+        self.add_good_rep_button = tk.Button(
+                self.good_frame,
+                font=self.main_font,
+                text="+ 1",
+                command=self.add_good_reply
+            )
+        self.add_good_rep_button.grid(row=1, column=1, sticky=tk.W)
+
+        self.good_frame.pack(fill=tk.X)
 
         # display the master frame
         self.masters_frame.pack(expand=tk.YES)
 
         # lauch the window
         self.windows.mainloop()
+
+    def remove_good_reply(self) -> None:
+        print("2 x lol")
+
+    def add_good_reply(self) -> None:
+        print("lol")
 
     def quit_windowl(self) -> None:
         self.windowl.quit()
