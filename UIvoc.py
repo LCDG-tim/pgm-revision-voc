@@ -353,26 +353,40 @@ class App:
         # set master frame
         self.masters_frame = tk.Frame(self.windows, bg="#777777")
 
+        # set and display the main score display
         self.current_score = tk.Label(
                 self.masters_frame,
                 text="{} / {} or {} % good replies".format(
                         self.good_replies,
                         self.number_words,
                         round(self.good_replies * 100 / self.number_words, 1)
-                    )
+                    ),
+                font=self.main_font
             )
         self.current_score.pack(fill=tk.X)
 
+        # set and display the number of good replies enumerate
         self.good_label = tk.Label(
                 self.masters_frame,
+                font=self.main_font,
+                text="good replies : {}".format(self.good_replies)
+            )
+        self.good_label.pack(fill=tk.X)
 
+        # set and display the number of words which are asked
+        self.number_label = tk.Label(
+                self.masters_frame,
+                text="number of words asked : {}".format(
+                        self.number_words
+                    ),
+                font=self.main_font
             )
 
         # display the master frame
-        self.masterl_frame.pack(expand=tk.YES)
+        self.masters_frame.pack(expand=tk.YES)
 
         # lauch the window
-        self.windowl.mainloop()
+        self.windows.mainloop()
 
     def quit_windowl(self) -> None:
         self.windowl.quit()
