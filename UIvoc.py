@@ -15,6 +15,10 @@ import random
 from vocabulaire import voc
 
 
+def swicth_variables(a, b) -> tuple:
+    return b, a
+
+
 class List_button:
 
     def __init__(self, main, i: int, name: str) -> None:
@@ -349,6 +353,29 @@ class App:
         # display the master frame
         self.masterl_frame.pack(expand=tk.YES)
 
+        # =====================================================================
+        # set the menu bar
+        self.menu_bar_winl = tk.Menu(self.windowl)
+
+        # set first cascade
+        self.file_menu_winl = tk.Menu(self.menu_bar_winl, tearoff=0)
+
+        # add a command
+        self.file_menu_winl.add_command(
+                label="quit the page",
+                command=self.quit_windowl
+            )
+
+        # add the cascade to the menu bar
+        self.menu_bar_winl.add_cascade(
+                menu=self.file_menu_winl,
+                label="file"
+            )
+
+        # add the menu bar
+        self.windowl.config(menu=self.menu_bar_winl)
+        # =====================================================================
+
         # lauch the window
         self.windowl.mainloop()
 
@@ -501,9 +528,13 @@ class App:
         self.masters_frame.pack(expand=tk.YES)
 
         # =====================================================================
-        # menu bar
+        # set the menu bar
         self.menu_bar_wins = tk.Menu(self.windows)
+
+        # set first cascade
         self.file_menu_wins = tk.Menu(self.menu_bar_wins, tearoff=0)
+
+        # add a command 3x
         self.file_menu_wins.add_cascade(
                 label="cancel modifications",
                 command=self.cancel_wins
@@ -516,14 +547,19 @@ class App:
                 label="quit the page",
                 command=self.quit_windows
             )
+
+        # add the cascade to the menu bar
         self.menu_bar_wins.add_cascade(
                 menu=self.file_menu_wins,
                 label="file"
             )
+
+        # set second cascade
         self.command_menu_wins = tk.Menu(
                 self.menu_bar_wins,
                 tearoff=0
             )
+        # add a command 4x
         self.command_menu_wins.add_command(
                 label="-1 reply",
                 command=self.remove_good_reply
@@ -540,10 +576,14 @@ class App:
                 label="+1 word",
                 command=self.add_word_asked
             )
+
+        # add the cascade to the menu bar
         self.menu_bar_wins.add_cascade(
                 menu=self.command_menu_wins,
                 label="commands"
             )
+
+        # add the menu bar
         self.windows.config(menu=self.menu_bar_wins)
         # =====================================================================
 
@@ -637,10 +677,10 @@ class App:
         self.language_button["text"] = "switch language to {}".format(
                         ("French", "German")[self.french_first]
                     )
-        a = self.question
-        self.question = self.answer
-        self.answer = a
-        del a
+        self.question, self.answer = swicth_variables(
+                self.question,
+                self.answer
+            )
         self.first_entry["text"] = self.question
         self.solut_label["text"] = ""
         self.second_entry.delete(0, tk.END)
