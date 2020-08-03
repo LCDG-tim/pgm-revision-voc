@@ -378,46 +378,118 @@ class App:
             )
         self.current_score.pack(fill=tk.X)
 
-        # set & display the number of words which are asked
-        self.number_label = tk.Label(
-                self.masters_frame,
-                text="number of words asked : {}".format(
-                        self.number_words
-                    ),
-                font=self.main_font
-            )
-        self.number_label.pack(fill=tk.X)
-
         # set the frame with the add 1 remove 1 good replied
-        self.good_frame = tk.Frame(self.masters_frame)
+        self.good_frame = tk.Frame(self.masters_frame, bg="#A52020")
 
         # set & display the number of good replies enumerate
         self.good_label = tk.Label(
                 self.good_frame,
                 font=self.main_font,
-                text="good replies : {}".format(self.good_replies)
+                text="good replies : "
             )
-        self.good_label.grid(row=0, sticky=tk.W)
+        self.good_label.grid(row=0, column=0, sticky=tk.W)
 
-        # set and display the button to remove 1 good reply
-        self.remove_good_rep_button = tk.Button(
+        # set & display the number
+        self.good_label2 = tk.Label(
                 self.good_frame,
                 font=self.main_font,
-                text="- 1",
+                text="{}".format(self.good_replies),
+            )
+        self.good_label2.grid(row=0, column=1, sticky=tk.W)
+
+        # set the -1 frame
+        self.minus1F = tk.Frame(
+                self.good_frame
+            )
+        # set and display the button to remove 1 good reply
+        self.remove_good_rep_button = tk.Button(
+                self.minus1F,
+                font=self.main_font,
+                text="-1",
                 command=self.remove_good_reply
             )
-        self.remove_good_rep_button.grid(row=1, column=1, sticky=tk.W)
+        self.remove_good_rep_button.pack(fill=tk.X)
+
+        # display the -1 frame
+        self.minus1F.grid(row=1, column=0, sticky=tk.W)
+
+        # set the +1 frame
+        self.plus1F = tk.Frame(
+                self.good_frame
+            )
 
         # set & display the button to add 1 good reply
         self.add_good_rep_button = tk.Button(
-                self.good_frame,
+                self.plus1F,
                 font=self.main_font,
-                text="+ 1",
+                text="+1",
                 command=self.add_good_reply
             )
-        self.add_good_rep_button.grid(row=1, column=1, sticky=tk.W)
+        self.add_good_rep_button.pack(fill=tk.X)
 
+        # display the +1 frame
+        self.plus1F.grid(row=1, column=1, sticky=tk.W)
+
+        # display the frame for good word
         self.good_frame.pack(fill=tk.X)
+
+        # set the number frame
+        self.number_frame = tk.Frame(
+                self.masters_frame
+            )
+
+        # set & display the number of words which are asked
+        self.number_label = tk.Label(
+                self.number_frame,
+                text="number of words asked : ",
+                font=self.main_font
+            )
+        self.number_label.grid(row=0, column=0, sticky=tk.W)
+
+        # set & display the number of words asked
+        self.number_label2 = tk.Label(
+                self.number_frame,
+                text="{}".format(
+                        self.number_words
+                    ),
+                font=self.main_font
+            )
+        self.number_label2.grid(row=0, column=1, sticky=tk.W)
+
+        # set the -1 frame
+        self._minus1F = tk.Frame(
+                self.number_frame,
+            )
+
+        # set & display the button to remove 1 at the number word
+        self.remove_1_word_but = tk.Button(
+                self._minus1F,
+                text='-1',
+                font=self.main_font
+            )
+        self.remove_1_word_but.pack(fill=tk.X)
+
+        # display the -1 frame
+        self._minus1F.grid(row=1, column=0, sticky=tk.W)
+
+        # set the +1 frame
+        self._plus1F = tk.Frame(
+                self.number_frame
+            )
+
+        # set & display the button to add 1 word asked
+        self.add_1_word_but = tk.Button(
+                self._plus1F,
+                text="+1",
+                font=self.main_font
+            )
+        self.add_1_word_but.pack(fill=tk.X)
+
+        # display the +1 frame
+        self._plus1F.grid(row=1, column=1, sticky=tk.W)
+
+        # display the number frame
+        self.number_frame.pack(fill=tk.X)
 
         # display the master frame
         self.masters_frame.pack(expand=tk.YES)
