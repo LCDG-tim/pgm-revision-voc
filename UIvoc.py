@@ -78,7 +78,7 @@ class App:
                 font=self.main_font,
                 text="list studied : {}".format(self.liste_cible)
             )
-        self.list_label.pack(fill=tk.X)
+        self.list_label.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the text of the vocabulary word asked
         self.first_entry = tk.Label(
@@ -86,7 +86,7 @@ class App:
                 bg="#2020A5",
                 font=self.main_font
             )
-        self.first_entry.pack(fill=tk.X)
+        self.first_entry.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the entry to let the users try to complete
         self.second_entry = tk.Entry(
@@ -95,14 +95,14 @@ class App:
                 justify="center",
                 font=self.main_font
             )
-        self.second_entry.pack(fill=tk.X)
+        self.second_entry.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the text to see if the second entry is True or False
         self.verif_label = tk.Label(
                 self.left_frame,
                 font=self.main_font
             )
-        self.verif_label.pack(fill=tk.X)
+        self.verif_label.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the text to let the users have a solutio
         self.solut_label = tk.Label(
@@ -110,7 +110,7 @@ class App:
                 bg="#777777",
                 font=self.main_font
             )
-        self.solut_label.pack(fill=tk.X)
+        self.solut_label.pack(fill=tk.X, expand=tk.YES)
 
         # set the default score and the number of word
         self.good_replies = 0
@@ -123,7 +123,7 @@ class App:
                 text="",
                 font=self.main_font
             )
-        self.score_label.pack(fill=tk.X)
+        self.score_label.pack(fill=tk.X, expand=tk.YES)
 
         # display the left frame ont the left
         self.left_frame.grid(row=0, column=0, sticky=tk.W)
@@ -138,9 +138,10 @@ class App:
                 self.button_frame,
                 text="List of Button",
                 bg="#777777",
+                fg="#DADADA",
                 font=self.main_font
             )
-        self.advert_label.pack(fill=tk.X)
+        self.advert_label.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the button to change the language asked and answered
         self.language_button = tk.Button(
@@ -151,7 +152,7 @@ class App:
                 font=self.main_font,
                 command=self.change_language
             )
-        self.language_button.pack(fill=tk.X)
+        self.language_button.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the button to open the list of list of vocabulary
         self.list_selector_button = tk.Button(
@@ -160,7 +161,7 @@ class App:
                 font=self.main_font,
                 command=self.list_app
             )
-        self.list_selector_button.pack(fill=tk.X)
+        self.list_selector_button.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the Scale for set or unset the random list mode
         self.only_a_list = tk.Scale(
@@ -171,7 +172,7 @@ class App:
                 font=self.main_font,
                 label="Only a list"
             )
-        self.only_a_list.pack(fill=tk.X)
+        self.only_a_list.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the button to change the word asked
         self.next_word = tk.Button(
@@ -180,7 +181,7 @@ class App:
                 font=self.main_font,
                 command=self.change_word
             )
-        self.next_word.pack(fill=tk.X)
+        self.next_word.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the button to verify if the word in the second entry
         # is True or False
@@ -190,7 +191,7 @@ class App:
                 font=self.main_font,
                 command=self.verif
             )
-        self.verif_button.pack(fill=tk.X)
+        self.verif_button.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the Button to display the solution, the translation of
         # the word
@@ -200,7 +201,7 @@ class App:
                 font=self.main_font,
                 command=self.give_solution
             )
-        self.solut_button.pack(fill=tk.X)
+        self.solut_button.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the button to add 1 at the score
         self.score_button = tk.Button(
@@ -209,7 +210,16 @@ class App:
                 font=self.main_font,
                 command=self.add_score
             )
-        self.score_button.pack(fill=tk.X)
+        self.score_button.pack(fill=tk.X, expand=tk.YES)
+
+        # set & display the button to open the score manager
+        self.test = tk.Button(
+                self.button_frame,
+                text="score manager",
+                font=self.main_font,
+                command=self.score_manage
+            )
+        self.test.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the button to quit the page
         self.quit_button = tk.Button(
@@ -218,7 +228,7 @@ class App:
                 font=self.main_font,
                 command=self.quit_window
             )
-        self.quit_button.pack(fill=tk.X)
+        self.quit_button.pack(fill=tk.X, expand=tk.YES)
 
         # display the right button frame
         self.button_frame.grid(row=0, column=1, sticky=tk.W)
@@ -233,13 +243,13 @@ class App:
 
         # add a command to the first menu to quit the page
         self.file_menu.add_command(
-                label="quitter",
+                label="quit the page",
                 command=self.quit_window
             )
 
         # add the menu to the menu bar
         self.menu_bar.add_cascade(
-                label="fichier",
+                label="file",
                 menu=self.file_menu
             )
 
@@ -257,7 +267,7 @@ class App:
 
         # add a command to open the list selector
         self.command_menu.add_command(
-                label="chose a specific list",
+                label="chose a list",
                 command=self.list_app
             )
 
@@ -284,17 +294,6 @@ class App:
                 label="commands",
                 menu=self.command_menu
             )
-        # =====================================================================
-
-        # =====================================================================
-        # test score manage
-        self.test = tk.Button(
-                self.button_frame,
-                text="test",
-                font=self.main_font,
-                command=self.score_manage
-            )
-        self.test.pack(fill=tk.X)
         # =====================================================================
 
         # =====================================================================
@@ -353,18 +352,24 @@ class App:
         # lauch the window
         self.windowl.mainloop()
 
+    def quit_windowl(self) -> None:
+        self.windowl.quit()
+        self.windowl.destroy()
+
     def score_manage(self) -> None:
         self.windows = tk.Tk()
-        self.windows.geometry("400x450+100+20")
-        self.windows.minsize(400, 450)
+        self.windows.geometry("600x350+200+200")
+        self.windows.minsize(600, 350)
         self.windows.maxsize(
                 self.windows.winfo_screenwidth(),
                 self.windows.winfo_screenheight()
             )
         self.windows.config(bg="#777777")
 
+        self.save_value = (self.good_replies, self.number_words)
+
         # set master frame
-        self.masters_frame = tk.Frame(self.windows, bg="#777777")
+        self.masters_frame = tk.Frame(self.windows, bg="#A0A0A0")
 
         # set and display the main score display
         self.current_score = tk.Label(
@@ -374,32 +379,27 @@ class App:
                         self.number_words,
                         round(self.good_replies * 100 / self.number_words, 1)
                     ),
-                font=self.main_font
+                font=self.main_font,
+                bg="#A0A0A0"
             )
-        self.current_score.pack(fill=tk.X)
-
-        # set the frame with the add 1 remove 1 good replied
-        self.good_frame = tk.Frame(self.masters_frame, bg="#A52020")
+        self.current_score.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the number of good replies enumerate
         self.good_label = tk.Label(
-                self.good_frame,
+                self.masters_frame,
                 font=self.main_font,
-                text="good replies : "
+                text="good replies : {}".format(self.good_replies),
+                bg="#A0A0A0"
             )
-        self.good_label.grid(row=0, column=0, sticky=tk.W)
+        self.good_label.pack(fill=tk.X, expand=tk.YES)
 
-        # set & display the number
-        self.good_label2 = tk.Label(
-                self.good_frame,
-                font=self.main_font,
-                text="{}".format(self.good_replies),
-            )
-        self.good_label2.grid(row=0, column=1, sticky=tk.W)
+        # set the frame with the add 1 remove 1 good replied
+        self.good_frame = tk.Frame(self.masters_frame, bg="#A0A0A0")
 
         # set the -1 frame
         self.minus1F = tk.Frame(
-                self.good_frame
+                self.good_frame,
+                bg="#A0A0A0"
             )
         # set and display the button to remove 1 good reply
         self.remove_good_rep_button = tk.Button(
@@ -408,14 +408,15 @@ class App:
                 text="-1",
                 command=self.remove_good_reply
             )
-        self.remove_good_rep_button.pack(fill=tk.X)
+        self.remove_good_rep_button.pack(fill=tk.X, expand=tk.YES)
 
         # display the -1 frame
-        self.minus1F.grid(row=1, column=0, sticky=tk.W)
+        self.minus1F.grid(row=0, column=0, sticky=tk.W, padx=100, pady=3)
 
         # set the +1 frame
         self.plus1F = tk.Frame(
-                self.good_frame
+                self.good_frame,
+                bg="#A0A0A0"
             )
 
         # set & display the button to add 1 good reply
@@ -423,89 +424,170 @@ class App:
                 self.plus1F,
                 font=self.main_font,
                 text="+1",
-                command=self.add_good_reply
+                command=self.add_score
             )
-        self.add_good_rep_button.pack(fill=tk.X)
+        self.add_good_rep_button.pack(fill=tk.X, expand=tk.YES)
 
         # display the +1 frame
-        self.plus1F.grid(row=1, column=1, sticky=tk.W)
+        self.plus1F.grid(row=0, column=1, sticky=tk.W, padx=100, pady=3)
 
         # display the frame for good word
-        self.good_frame.pack(fill=tk.X)
+        self.good_frame.pack(fill=tk.X, expand=tk.YES)
 
         # set the number frame
         self.number_frame = tk.Frame(
-                self.masters_frame
+                self.masters_frame,
+                bg="#A0A0A0"
             )
 
         # set & display the number of words which are asked
         self.number_label = tk.Label(
-                self.number_frame,
-                text="number of words asked : ",
-                font=self.main_font
+                self.masters_frame,
+                text="number of words asked : {}".format(self.number_words),
+                font=self.main_font,
+                bg="#A0A0A0"
             )
-        self.number_label.grid(row=0, column=0, sticky=tk.W)
-
-        # set & display the number of words asked
-        self.number_label2 = tk.Label(
-                self.number_frame,
-                text="{}".format(
-                        self.number_words
-                    ),
-                font=self.main_font
-            )
-        self.number_label2.grid(row=0, column=1, sticky=tk.W)
+        self.number_label.pack(fill=tk.X, expand=tk.YES)
 
         # set the -1 frame
         self._minus1F = tk.Frame(
                 self.number_frame,
+                bg="#A0A0A0"
             )
 
         # set & display the button to remove 1 at the number word
         self.remove_1_word_but = tk.Button(
                 self._minus1F,
                 text='-1',
-                font=self.main_font
+                font=self.main_font,
+                command=self.remove_word_asked
             )
-        self.remove_1_word_but.pack(fill=tk.X)
+        self.remove_1_word_but.pack(fill=tk.X, expand=tk.YES)
 
         # display the -1 frame
-        self._minus1F.grid(row=1, column=0, sticky=tk.W)
+        self._minus1F.grid(row=0, column=0, sticky=tk.W, padx=100, pady=3)
 
         # set the +1 frame
         self._plus1F = tk.Frame(
-                self.number_frame
+                self.number_frame,
+                bg="#A0A0A0"
             )
 
         # set & display the button to add 1 word asked
         self.add_1_word_but = tk.Button(
                 self._plus1F,
                 text="+1",
-                font=self.main_font
+                font=self.main_font,
+                command=self.add_word_asked
             )
-        self.add_1_word_but.pack(fill=tk.X)
+        self.add_1_word_but.pack(fill=tk.X, expand=tk.YES)
 
         # display the +1 frame
-        self._plus1F.grid(row=1, column=1, sticky=tk.W)
+        self._plus1F.grid(row=0, column=1, sticky=tk.W, padx=100, pady=3)
 
         # display the number frame
-        self.number_frame.pack(fill=tk.X)
+        self.number_frame.pack(fill=tk.X, expand=tk.YES)
+
+        # set & display the button to done the modification
+        self.done_button = tk.Button(
+                self.masters_frame,
+                font=self.main_font,
+                text="done",
+                command=self.quit_windows
+            )
+        self.done_button.pack(expand=tk.YES)
 
         # display the master frame
         self.masters_frame.pack(expand=tk.YES)
 
+        # =====================================================================
+        # menu bar
+        self.menu_bar_wins = tk.Menu(self.windows)
+        self.file_menu_wins = tk.Menu(self.menu_bar_wins, tearoff=0)
+        self.file_menu_wins.add_cascade(
+                label="cancel modifications",
+                command=self.cancel_wins
+            )
+        self.file_menu_wins.add_command(
+                label="done",
+                command=self.quit_windows
+            )
+        self.file_menu_wins.add_command(
+                label="quit the page",
+                command=self.quit_windows
+            )
+        self.menu_bar_wins.add_cascade(
+                menu=self.file_menu_wins,
+                label="file"
+            )
+        self.command_menu_wins = tk.Menu(
+                self.menu_bar_wins,
+                tearoff=0
+            )
+        self.command_menu_wins.add_command(
+                label="-1 reply",
+                command=self.remove_good_reply
+            )
+        self.command_menu_wins.add_command(
+                label="+1 reply",
+                command=self.add_score
+            )
+        self.command_menu_wins.add_command(
+                label="-1 word",
+                command=self.remove_word_asked
+            )
+        self.command_menu_wins.add_command(
+                label="+1 word",
+                command=self.add_word_asked
+            )
+        self.menu_bar_wins.add_cascade(
+                menu=self.command_menu_wins,
+                label="commands"
+            )
+        self.windows.config(menu=self.menu_bar_wins)
+        # =====================================================================
+
         # lauch the window
         self.windows.mainloop()
 
+    def update_score_label(self) -> None:
+        self.score_label["text"] = "{} / {} or {} % of right replies".format(
+                        self.good_replies,
+                        self.number_words,
+                        round(self.good_replies * 100 / self.number_words, 1)
+                    )
+        self.current_score["text"] = "{} / {} or {} % of right replies".format(
+                        self.good_replies,
+                        self.number_words,
+                        round(self.good_replies * 100 / self.number_words, 1)
+                    )
+        self.good_label["text"] = "good replies : {}".format(self.good_replies)
+        self.number_label["text"] = "number of words asked : " \
+            "{}".format(self.number_words)
+
     def remove_good_reply(self) -> None:
-        print("2 x lol")
+        self.good_replies -= 1
+        self.update_score_label()
 
-    def add_good_reply(self) -> None:
-        print("lol")
+    def add_score(self) -> None:
+        self.good_replies += 1
+        self.update_score_label()
 
-    def quit_windowl(self) -> None:
-        self.windowl.quit()
-        self.windowl.destroy()
+    def remove_word_asked(self) -> None:
+        self.number_words -= 1
+        self.update_score_label()
+
+    def add_word_asked(self) -> None:
+        self.number_words += 1
+        self.update_score_label()
+
+    def cancel_wins(self) -> None:
+        self.good_replies, self.number_words = self.save_value
+        self.update_score_label()
+
+    def quit_windows(self) -> None:
+        self.windows.quit()
+        self.windows.destroy()
 
     def verif(self) -> None:
         if self.second_entry.get() == self.answer:
@@ -514,14 +596,6 @@ class App:
         else:
             self.verif_label["text"] = "Faux"
             self.verif_label["bg"] = "#A52020"
-
-    def add_score(self) -> None:
-        self.good_replies += 1
-        self.score_label["text"] = "{} / {} or {} % of right replies".format(
-                        self.good_replies,
-                        self.number_words,
-                        round(self.good_replies * 100 / self.number_words, 1)
-                    )
 
     def choix(self) -> tuple:
         if not self.only_a_list.get():
