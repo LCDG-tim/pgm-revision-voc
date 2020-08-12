@@ -640,6 +640,15 @@ def voc() -> dict:
     return vocabulaire
 
 
+def save():
+    voca = voc()
+    with open("vocabulaire.csv", "w") as file:
+        file.write("liste;allemand;francais\n")
+        for i in voca.keys():
+            for j in voca[i].items():
+                file.write("{};{};{}\n".format(i,j[0], j[1]))
+
+
 def test(a: dict = voc(), b: dict = voc()):
     list_of_voc_keys = list(a.keys())
     nombre_de_liste_alex = 0
@@ -808,4 +817,5 @@ Liste à étudier =
 if __name__ == "__main__":
     vocabulaire = voc()
     test()
+    save()
     del rdm, test, voc

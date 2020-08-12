@@ -1,0 +1,560 @@
+liste;allemand;francais
+0.01;In meinem Vortrag möchte ich das Thema ... behandeln;Dans mon exposée je veux traiter le thème ...
+0.01;Ich möchte in meinem Bericht über ... sprechen;Je veux, dans mon écrit, parler de ...
+0.01;Im ersten Teil werde ich ... (+ VI fin);Dans une première partie, je vais (+VI) de ...
+0.01;Im zweiten Teil ...;Dans une seconde partie
+0.01;Im dritten Teil ...;Dans une troisième partie
+0.01;Zuerst werde ich versuchen, auf die Frage ... beantworten;Tout d'abord, je chercherai à répondre à la question ...
+0.01;Dann/Dannach (+ V2);Puis/Ensuite (+ V2)
+0.01;Zum Schluss möchte ich ... (+ VI fin);Pour finir, je veux (+ VI) ...
+0.01;Schließlich möchte ich ... (+ VI fin);Enfin, je veux (+ VI) ...
+0.01;Anschließend möchte ich ... (+ VI fin);Finallement, je veux (+ VI) ...
+0.01;zum Beispiel;par exemple (zum)
+0.01;beispielweise;par exemple
+0.01;Ich möchte einen Beispiel nennen;je veux citer un exemple
+0.01;Ich möchte einen Beispiel anführen;je veux donner un exemple
+0.01;Ein Beispiel für ... ist ...;un exemple pour ... est ...
+0.01;Im Unterricht haben wir einen Text/einen Hörtext zu diesem Thema besprochen;En cour nous avons étudier un texte/audio qui parlait sur le thème
+0.01;Es handelt sich um einen Auszug aus dem Roman ... von ...;Il s'agissait du roman ... de ...
+0.01;Es handelt sich um einen Bericht über ...;Il s'agissait d'un écrit sur ...
+0.01;Es handelt sich um einen Zeitungsartikel zum Thema ...;Il s'agissait d'un article de journal sur le thème de de ...
+0.01;Wir haben zum Beispiel ein sehr interessantes Interview mit (D) gehört/gelesen und ich habe dabei erfahren, dass ... (+ V fin);nous avons entendu, lu par exemple une interview très interressante avec (D) et je compris que ...
+0.01;In diesem Text/Film wird gezeit, wie ... (+ V fin);dans ce texte/film qui est montré, nous ... (+ V fin)
+0.01;im Vergleich zu;comparé à
+0.01;in Unterschied zu;à la différence de
+0.01;im Gegensatz zu;contrairement à
+0.01;verglichen mit;comparé à
+0.01;und;et
+0.01;auch;aussi
+0.01;sowie;aussi bien que
+0.01;außerdem;en plus
+0.01;weiterhin;en houtre
+0.01;ansonsten;autrement
+0.01;sonst;sinon
+0.01;zusätzlich;de surcroït
+0.01;jedoch;cependant
+0.01;dennoch;pourtant (de)
+0.01;trotzdem;pourtant
+0.01;zwar ... aber;certes ... mais
+0.01;einerseits ... andereseits;d'une part ... d'autre part
+0.01;während (+ V fin);tandis que
+0.01;obwohl (+ V fin);bien que
+0.01;V2 + nämlich;en effet
+0.01;weil (+ V fin);parce que
+0.01;da (+ V fin);puisque
+0.01;denn;car
+0.01;deshalb (+ V2);c'est pourquoi
+0.01;darum (+ V2);voilà pourquoi
+0.01;aus diesem Grund (+ V2);pour cette raison
+0.01;vor + D;avant
+0.01;nach + D;après
+0.01;bei + D;lors de
+0.01;vor + D (indication temporelle);il y a + indication temporelle
+0.01;zu + D;les fêtes
+0.01;in + D;l'année, la saison, le mois, le moment
+0.01;an + D;le jour et le moment de la journée
+0.01;um;l'heure exacte
+0.01;Seit wann?;Depuis quand?
+0.01;seit + D;depuis
+0.01;seit;depuis que (court)
+0.01;seitdem;depuis que (long)
+0.01;seither;depuis (lors)
+0.01;seitdem (lors);depuis (lors)
+0.01;seit langem;depuis longtemps
+0.01;schon lange/längst;depuis longtemps(schon)
+0.01;Bis wann?;jusqu'à quand?
+0.01;bis zu + D;jusqu'à
+0.01;bis;jusqu'à ce que, avant que
+0.01;bisher;jusqu'alors
+0.01;bislang;jusqu'alors
+0.01;Wie lange?;combien de temps?
+0.01;... (A) Lang;durant ... (court)
+0.01;togelang;durant ... (t)
+0.01;wochenlang;durant ... (w)
+0.01;solange;tant que
+0.01;lange;longtemps
+0.01;längst;depuis longtemps
+0.01;schon lange;depuis longtemps (sc)
+0.01;von ... bis ...;de ... à ...
+0.01;nie;jamais
+0.01;Ich finde, dass ...;Je trouve que ...
+0.01;Ich denke, dass ...;Je pense que ...
+0.01;Ich glaube, dass ...;Je crois que ... 
+0.01;Ich meine, dass ...;Je pense que ... (pensée)
+0.01;ich bin der Meinung, dass ...;j'ai la pensé que ...
+0.01;Meine Meinung nach, (+ V2) ...;D'après ma pensée, ...
+0.01;Ich bin mit Herrn W. (nicht) einverstanden;Je (ne) suis (pas) d'accord avec Herrn W.
+0.01;Herr W. denkt, dass ... Ich bin damit (nicht) einverstanden;Mr. W. pense que ... je (ne) suis (pas) d'accord avec lui
+0.01;Herr W. ist für/gegen ... Ich bin dafür / dagegen;Mr W. est pour contre ... Je suis aussi pour / contre
+0.01;In diesem Vortrag habe ich versucht, über ... nachzudenken;Dans mon exposé, j'ai cherché à penser sur ...
+0.01;In diesem Vortrag habe ich versucht, Ihnen über die Begriffe und Inhalte ... meine Gedanken darszustellen;dans mon exposé, j'ai cherché grace à ... , à vous présenter ma pensée
+0.01;Um meinem Vortrag zu beenden, (+ V2);Pour finir mon exposé, ...
+0.01;Viele Danke!;Merci beacoup!
+0.01;Danke schön!;Merci bien!
+0.01;Ich bedanke mich bei Ihnen für Ihre Aufmerksamkeit;Je vous remercie
+0.01;Absatz;paragraphe
+0.01;indem +Vfin;en + Vfin
+0.01;die Welt;le monde
+0.01;das Fahrrad(¨-er);le vélo
+0.01;adj-er als;comparatif de supériorité
+0.01;nicht so adj wie;comparatif d'infériorité
+0.1;mich;je (A)
+0.1;dich;tu (A)
+0.1;ihn;il (A)
+0.1;sie;elle (A)
+0.1;es;neutre (A)
+0.1;wir;nous (A)
+0.1;ihr;vous (A)
+0.1;Sie;vous (politesse) (A)
+0.1;sie (pluriel);ils, elles (A) (add (pluriel) )
+0.2;mir;je (D)
+0.2;dir;tu (D)
+0.2;ihm;il (D)
+0.2;ihm (neutre);neutre (D) (add (neutre) )
+0.2;ihr;elle (D)
+0.2;uns;nous (D)
+0.2;euch;vous (D)
+0.2;Ihnen;vous (politesse) (D)
+0.2;ihnen;ils, elles (D)
+0.3;müssen;devoir (dépend de moi)
+0.3;können;pouvoir (dépend de moi)
+0.3;wollen;vouloir (dépend de moi)
+0.3;sollen;devoir (dépend d'un tiers)
+0.3;dürfen;pouvoir (dépend d'un tiers)
+0.3;mögen;souhaiter (dépend d'un tiers)
+0.3;sein;être
+0.3;haben;avoir
+0.4;trotzdem;pourtant, malgré tout, quand même
+0.4;obwohl +Vfin;bien que (mot subordonnant)
+0.4;auch wenn;même si (mot subordonnant)
+0.4;sobald;dès que
+0.4;während;pendant que, tandis que
+0.4;wenn;quand, lorsque
+0.4;als;quand, lorsque, au moment où
+0.5;durch;à travers, grâce à
+0.5;für;pour + GN
+0.5;gegen;contre
+0.5;ohne;sans
+0.5;um;autour de
+0.6;aus;hors de
+0.6;bei;chez
+0.6;mit;avec
+0.6;nach;après
+0.6;seit;depuis
+0.6;von;de
+0.6;zu;vers, chez
+0.7;während;pendant
+0.7;trotz;malgré
+0.7;(an)statt;au lieu de
+0.7;wegen;à cause de
+2.1;die Herkunft;l'origine
+2.1;Woher;d'où
+2.1;her/kommen;provenir
+2.1;aus ... kommen;venir de ...
+2.1;dort;là-bas
+2.1;hier;ici
+2.1;die Heimat;le pays d'accueil/le pays d'adoption
+2.1;aus ... stammen;provenir de ...
+2.1;die Wurzel(-n);la racine
+2.1;wo ich hingehöre;là où je suis à ma place/chez moi
+2.1;die Geborgenheit;le sentiment de sécurité
+2.1;sich geborgen fühlen;se sentir en sécurité
+2.1;sich wohl fühlen;se sentir bien
+2.1;traurig;triste
+2.1;sich in (A) integrieren;s'intégrer à
+2.1;Heimweh haben;avoir le mal du pays, avoir le cafard
+2.1;etw. fehlt mir;qqch me manque (mir)
+2.1;ich vermisse etw.;qqch me manque (ich)
+2.1;die Freiheit;la liberté
+2.2;die Landschaft;le paysage
+2.2;der Ort(-e);le lieu
+2.2;die Geschichte;l'histoire
+2.2;die Architektur;l'architechture
+2.2;das Erbe;l'héritage
+2.2;die Tracht(-en);die traditionelle Kleidung = l'habit traditionnel
+2.2;der Kiosk, die Imbiss, die Bude;le snack-bar
+2.2;etw. dar/stellen;représenter qqch
+2.2;etw. symbolisieren;symboliser qqch
+2.2;etw. bedeuten;signifier qqch
+2.2;jm. wichtig sein;être important pour qqn
+2.3;integriert sein;être intégré
+2.3;mit jm. in Kontakt kommen;entrer en contact avec qqn
+2.3;etw. gemeinsam haben;avoir qqch en commun
+2.3;das Zugehörigkeitsgefühl;le sentiment d'appartenance
+2.3;eine Zukunft haben;avoir un avenir
+2.3;die Freiheit;la liberté
+2.3;in ... leben;vivre à/en ...
+2.3;das Leben;la vie
+2.3;in ... auf/wachsen;grandir en/à ...
+2.3;die Flucht;la fuite
+2.3;aus einem Land fliehen;fuir un pays
+2.3;in Frieden leben;vivre en paix
+2.3;die Hilfsbereitschaft;la serviabilité
+2.3;jm. helfen;aider qqn
+2.3;etw. beschützen;protéger qqch
+2.3;sich heimisch fühlen;se sentir chez soi
+2.4;weh tun;faire mal
+2.4;schmerzen;faire souffrir, être douloureux
+2.4;unerreichbar;inaccessible
+2.4;verloren;perdu
+2.4;zerstört;détruit
+2.4;Fernweh haben;avoir envie d'ailleurs, avoir la nostalgie du voyage
+2.4;eine Grenze überwinden;surmonter, dépasser une frontière
+2.4;etw. vermitteln;transmettre qqch
+2.4;etw. suchen;chercher qqch
+2.4;sich nach etw. sehnen;désirer qqch
+2.4;die Sehnsucht nach ...;le désir de ...
+2.4;das Besondere;le caractère particulier, la spécificité
+2.4;Identität stiften;forger une identité
+4.1;das Festival(-s);le festival
+4.1;ein Instrument spielen;jouer d'un instrument
+4.1;in einer Band, einem Orchestre spielen;jouer dans un groupe de musique, un Orchestre
+4.1;der Teilnehmer(-);le participant
+4.1;der Auftritt(-e);le passage sur scène
+4.1;auf/treten;se produire sur scène
+4.1;etw. auf/führen;jouer qqch
+4.1;etw. veranstalten;etw. organisieren
+4.1;an etw. (D) teil/nehmen;participer à qqch (teil)
+4.1;bei etw. (D) mit/machen;participer à qqch (mit)
+4.1;auf/nehmen;enregistrer
+4.2;der Frieden;la paix
+4.2;das Glück;le bonheur
+4.2;die Freundschaft;l'amitié
+4.2;die Liebe;l'amour
+4.2;die Freiheit;la liberté
+4.2;frei;libre
+4.2;Werte vermitteln;transmettre des valeurs
+4.2;die Gerechtigkeit;la justice
+4.2;das Zugehörigkeitsgefühl;le sentiment d'appartenance
+4.2;die Gleichheit;l'égalité des droits
+4.2;gleich sein;être égal
+4.2;die Vielfalt;la diversité
+4.2;sich für / gegen etw. engagieren, ein/setzen;s'engager pour / contre qqch
+4.2;jm. unterstützen;soutenir qqn
+4.2;Einfluss auf jn./etw. haben;avoir de l'influence sur qqn/qqch
+4.2;sich fûr / gegen etw. (A) kämpfen;se battre pour / contre qqch
+4.2;zu etw. (D) Stellung nehmen;prendre position sur qqch
+4.3;die Integration;l'intégration
+4.3;sich in (A) integrieren;s'intégrer dans
+4.3;neue Menschen, Kulturen kennen lernen;faire la connaissance de nouvelles personnes, découvir de nouvelles cultures
+4.3;die Fremdsprache(-n);la langue étrangère
+4.3;der Flüchtling(-e);le réfugier
+4.3;der Migrant(-en);le migrant
+4.3;aus einem Land fliehen;fuir un pays
+4.3;in einem Land bleiben;rester dans un pays
+4.3;benachteiligt;défavorisé
+4.3;etw. fördern = stärken;soutenir, consolider qqch
+4.3;die Sprachbariere überwinden;surmonter la barière de la langue
+4.3;jn. mit etw. verbinden;relier, unir qqn à qqch
+4.3;etw. verbinden;relier qqch
+4.3;etw. trennen;séparer, diviser qqch
+4.3;verbindend;qui relie, qui unit
+4.3;trennend;qui sépare
+4.3;bereichern;enrichir
+4.3;bereichernd;enrichissant
+4.3;jm. etw. bei/bringen;apprendre qqch à qqn
+4.3;etw. ermöglichen, erlauben;permettre qqch
+4.3;etw. erleichtern;faciliter qqch
+4.4;die Gesellschaft;la société
+4.4;die Zensur;la censure
+4.4;etw. zensieren;censurer qqch
+4.4;das Werk(-e);l'oeuvre
+4.4;die Gemeinschaft;la communauté
+4.4;die Verantwortung;la responsabilité
+4.4;die politische Macht;le pouvoir politique
+4.4;die Meinungsfreiheit;la liberté d'expression
+4.4;das Regime kritisieren;critiquer le régime
+4.4;etw. verbieten;interdir qqch
+4.4;etw. erlauben;autoriser qqch
+4.4;das Verbot(-e);l'interdiction
+4.4;die Erlaubnis;l'autorisation
+4.4;etw. (D) entsprechen;correpondre à qqch
+4.4;jn. von etw. überzeugen;convaicre qqn de qqch
+4.5;der Verein(-e);l'association
+4.5;etw. bieten;proposer qqch
+4.5;die darstellende und bildende Kunst;les arts dramatiques et plastique
+4.5;das Selbstbewusstsein;la confiance en soi
+4.5;jn. zu etw. an/regen;inciter qqn à qqch
+4.5;das Lied(-er);la chanson
+4.5;sagen;dire
+4.5;das Motto;le slogan
+4.5;der Widerstand;le résistant
+4.5;statt/finden;avoir lieu
+4.5;der Eintritt;l'entrée
+4.5;dauern;durer
+4.5;das Mitglied;le membre
+7.1;der Ort(-e);le lieu
+7.1;der Wald(¨-er);la forêt
+7.1;der Baum(¨-e);l'arbre
+7.1;das Holz;le bois
+7.1;der Vollmond;la pleine lune
+7.1;spazieren gehen;se promener
+7.1;einen Spaziergang machen;faire une promenade
+7.1;wandern;randonner
+7.1;der Jäger;le chasseur
+7.1;der Vogel(¨-);l'oiseau
+7.1;Vögel beobachten, hören;observer, entendre les oiseaux
+7.1;ruhig;calme
+7.1;still;silencieux
+7.1;die Ruhe;le calme
+7.1;die Stille;le silence
+7.1;die Meditation;la méditation
+7.1;meditieren;méditer
+7.2;die Landschaft;le paysage
+7.2;Feuer an/machen;faire du feu
+7.2;die Natur verherrlichen;glorifier la nature
+7.2;die pure/reine Luft genießen;apprècier, profiter de l'air pur
+7.2;Landschaftsbilder malen;peindre des paysages
+7.2;der Rückzugsort;le refuge
+7.2;der Sehnsuchtsort;le lieu auquel on aspire
+7.2;sich von der Natur inpirieren lassen;s'inspirer de la nature
+7.2;der innere Frieden;la paix intérieur
+7.2;in Harmonie mit der Natur leben;vivre en harmonie avec la nature
+7.3;die Legende(-n);la légende (leg)
+7.3;die Sage(-en);la légende(sag)
+7.3;das Mythos(die Mythen);le Mythe
+7.3;der Räuber(-);le voleur
+7.3;die Erzählung(-en);le récit
+7.3;die böse Hexe;la méchante sorcière
+7.3;der Wolf;le loup
+7.3;der Geist;l'esprit
+7.3;auf Geister treffen;tomber sur des esprits
+7.3;jm. begegnen;rencontrer qqch
+7.3;das Bedroliche;ce qui est menaçant
+7.3;bedrolich;menaçant
+7.3;sich verrierren;se perdre
+7.3;sich verlaufen;s'égarer
+7.3;eine spannende Geschichte;une histoire passionnante
+7.3;vor etw. (D) Angst haben;avoir peur de qqch
+7.3;Angst, Furcht aus/lösen;provoquer la peur
+7.3;etw. befürchten;craindre qqch
+7.3;gruselig;qui donne des frissons
+7.3;ein grauenerregende Geschichte;une histoire d'épouvante
+7.3;eine düstere Stimmung;une ambiance sombre
+7.3;erschreckend;effrayant
+7.3;jm. erschrecken;effrayer qqn
+7.3;erschrecken;prendre peur
+7.3;die Gefahr;le danger
+7.3;gefahrlich;dangereux
+7.3;einer Gefahr ausgesetzt sein;être exposé à un danger
+7.3;sich in etw. (A) verwandeln;se transformer en qqch
+7.3;die Verwandlung;la métamorphose
+6.1;der Senior(-en);le senior, la personne agée
+6.1;einsam;seul, solitaire
+6.1;jn. unterhalten;divertir qqn
+6.1;behindert;handicapé
+6.1;jn. begleiten;accompagner qqn
+6.1;jn. unterstützen;soutenir qqn
+6.1;Geld spenden;donner de l'argent
+6.1;Schulmaterial spenden;donner des fournitures scolaires
+6.1;obdachlos;sans-abri
+6.1;auf der Straße leben;vivre dans la rue
+6.1;Essen verteilen;distribuer à manger
+6.1;Decken verteilen;distribuer des couvertures
+6.2;der Flüchtling(-e);le réfugié
+6.2;der Pate(-n);le parrain
+6.2;die Patin(-nen);la marraine
+6.2;das Familienmitglied(-er);le membre de la famille
+6.2;jm. den Alltag zeigen;montrer la vie quotidienne à qqn
+6.2;mit jm. Zeit verbringen;passer du temps avec qqn
+6.2;aus seiner Heimat fliehen;fuir son pays
+6.2;vor dem Krieg fliehen;fuir la guerre
+6.2;monatelang auf der Flucht sein;être en fuite pendant des mois
+6.2;verfolgt werden;être persécuter
+6.2;in Not leben;vivre dans le besoin
+6.3;(etw.) kochen;faire la cuisine, cuisinier
+6.3;den Tisch decken != ab/decken;mettre != débarrasser la table
+6.3;die Spülmaschine aus/räumen;vider le lave-vaisselle
+6.3;den Müll weg/bringen;sortir la poubelle
+6.3;die Freude;la joie
+6.3;froh;content, joyeux
+6.3;die Begeisterung;l'enthousiasme
+6.3;begeistert;enthousiaste
+6.3;ein Land entdecken;découvrir un pays
+6.3;ein Abenteuer erleben;vivre une aventure
+6.3;seinen Traum verwirklichen;réaliser son rève
+6.3;vor etw. (D) Angst haben;avoir peur de qqch
+6.3;der Mut;le courage
+6.3;mutig;courageux
+6.3;den Mut nicht verlieren;ne pas se décourager
+6.3;(keine) Vorurteile haben;(ne pas) avoir des (de) préjugés
+6.3;anders leben;vivre autrement
+9.1;der Treffpunkt;le point de rencontre
+9.1;die erweiterte Realität (AR: Augmented Reality);la réalité augmentée
+9.1;die künstliche Intelligenz (= KI);l'intelligence artificielle
+9.1;etw. aus/leben;expérimenter qqch ; exprimer qqch
+9.1;etw. / jn. beeinflussen;influencer qqch / qqn
+9.1;ab/schalten;se couper du monde, de la réalité ; se déconnecter
+9.1;die Einsamkeit;la sollitude
+9.1;die Täuschung;l'illusion
+9.1;die Unterhaltung;le divertissement
+9.1;die Abhängigkeit;la dépendance, l'addiction
+9.1;für etw. verantwortlich sein;être responsable de qqch
+9.1;die Verantwortung;la responsabilité
+9.1;mit etw. verbunden sein;être lié à qqch
+9.2;der Vorteil(-e);l'avantage, le point positif
+9.2;der Fortschritt(-e);le progrès
+9.2;fortschritt;progressiste
+9.2;die Unterhaltung;le divertissement
+9.2;etw. ermöglichen;rendre qqch possible
+9.2;etw. aus/leben;expérimenter, vivre qqch ; exprimer qqch
+9.2;etw. bestellen;commander qqch
+9.2;etw. liefern;livrer qqch
+9.2;jm. helfen;aider qqn
+9.2;etw. ab/schaffen;supprimer qqch
+9.2;etw. ersetzen;remplacer qqch
+9.2;jm. etw. bei/bringen;apprendre qqch à qqn
+9.2;etw. lösen;résoudre qqch
+9.2;die Lösung(-en);la solution
+9.2;einfach;simple
+9.2;etw. vereinfachen;simplifier qqch
+9.3;der Nachteil(-e);l'inconvénient, le point négatif
+9.3;der Missbrauch;l'abus
+9.3;missbrauchen;abuser de qqch
+9.3;einsam sein;être isolé, seul
+9.3;die Einsamkeit;la sollitude
+9.3;die Täuschung;l'illusion
+9.3;der Rückschritt(-e);la régression
+9.3;rückschrittlich;régressif
+9.3;erniedrigend;humiliant
+9.3;die Gefahr(-en);le danger
+9.3;gefahrlich;dangereux
+9.3;etw. / jm. ausgesetzt sein;être à la merci de qqch / qqn
+9.3;von etw. / jm. (un)abhängig sein;être (in)dépendant de qqch / qqn
+9.3;die Abhängigkeit;la dépendance
+9.3;konditioniert, unterworfen sein;être conditionné, soumis
+9.3;jn. beurteilen;juger qqn
+9.3;das Vorurteil(-e);le préjugé
+9.4;in der Zukunft;dans le futur
+9.4;verantwortlich;responsable
+9.4;Verantwortung für etw. tragen;porter la responsabilité de qqch
+9.4;die Gesellschaft;la société
+9.4;die Regierung;le gouvernement
+9.4;die Gesundheit;la santé
+9.4;für jn. Entscheidungen treffen;prendre des décisions pour qqn
+9.4;bewusst;conscient
+9.4;unbewusst;inconscient
+9.4;die Partei(-en);le partie politique
+9.4;jn. identifizieren;identifier qqn
+9.4;der Bürger(-);le citoyen
+9.4;die Bürgerin(-nen);la citoyenne
+9.4;Kritik an etw. (D) üben;faire une critisque
+9.4;etw. / jn. kritisieren;critiquer qqch / qqn
+9.4;in Frage stellen, etw. hinterfragen;remettre en question qqch
+9.4;(keine) Willensfreiheit haben;(ne pas) avoir de libre arbitre
+9.4;etw. fördern;financer qqch
+9.4;die Förderung;la subvention
+9.4;etw. her/stellen;etw. produzieren
+9.4;menschlich;humain
+9.4;das Menschliche;le caractère humain
+9.4;etw. unterstützen;soutenir qqch
+9.9;etw. (nicht) verwechseln;(ne pas) confondre qqch
+9.9;etw. ein/blenden;insérer, afficher qqch
+9.9;der ieere Teiler;l'assiette vide
+9.9;das Gericht(-e);le plat
+9.9;beamen;télétransporter, téléporter
+11.1;sich befinden, liegen;se trouver, être situé
+11.1;der Norden;le nord
+11.1;der Süden;le sud
+11.1;der Osten;l'est
+11.1;der Westen;l'ouest
+11.1;nördlich / südlich von;au nord / sud de
+11.1;im Nordosten, Südwesten, im Zentrum ... liegen;être situé au nord-est, au sud-ouest, au centre
+11.1;ein Stadtstaat;une ville-Etat
+11.1;eine Stadt und ein Bundesland zugleich;une ville qui est aussi un land
+11.1;die sprachliche Vielfalt;la diversité linguistique
+11.1;der Unterschied(-e);la différence
+11.1;die Gemeinsamkeit(-en);la similitude, le point commun
+11.1;sich durch etw. unterschieden;se distinguer par qqch
+11.1;mit etw. vergleichen;comparer à qqch
+11.1;gleich sein;être identique
+11.1;anders sein;être différent
+11.1;verschieden;différent, divers
+11.1;das Bundesland(¨-er);le land, l'Etat fédéré
+11.1;der Stadtstaat(-en);la ville-Etats
+11.1;groß;grand
+11.1;klein;petit
+11.1;der Dialekt(-e);le dialecte, la langue régionnale
+11.1;dagegen;en revanche(adverbe)
+11.1;aber;mais
+11.1;im Vergleich mit / zu;comparé à
+11.1;im Unterschied zu (D);à la différence de
+11.1;adj-er als;comparatif de supériorité
+11.1;nicht so adj wie;comparatif d'infériorité
+11.2;die Bundesrepublik Deutschland;la république fédéral d'Allemagne
+11.2;der Osten;l'Est
+11.2;der Westen;l'Ouest
+11.2;der Norden;le Nord
+11.2;der Süden;le Sud
+11.2;das Bundesland(¨-er);le land
+11.2;föderal;fédéral
+11.2;der Föderalismus;le fédéralisme
+11.2;der Staat(-en);l'Etat
+11.2;der Stadtstaat(-en);la ville-Etat
+11.2;die Regierung;le gouvernement
+11.2;der Kanzler;le chancelier
+11.2;die Kanzlerin;la chancelière
+11.2;der Dialekt(-e);le dialecte
+11.3;der Erste Weltkrieg;la Première guerre mondiale
+11.3;der Zweite Weltkrieg;la Seconde Guerre mondiale
+11.3;die BRD (Bundesrepublik Deutschland);la RFA, l'Allemagne de l'Ouest
+11.3;die DDR (Deuscthe Demokratische Republik);die RDA, l'allemagne de l'Est
+11.3;das Deutsche Kaiserreich;l'Empire allemand
+11.3;einigen;unifier
+11.3;die Einigung;l'unification
+11.3;etw. gründen;fonder qqch
+11.3;die Gründung;la création, la fondation
+11.3;etw. teilen;diviser qqch
+11.3;die Teilung;la division
+11.3;etw. trennen;séparer qqch
+11.3;die Trennung;la séparation
+11.3;etw. versuchen;tenter, essayer qqch
+11.3;der Versuch;la tentative
+11.3;fliehen;s'enfuir
+11.3;die Flucht;la fuite
+11.3;eine Mauer bauen;construire un mur
+11.3;der Bau der Berliner Mauer;la construction du mur de Berlin
+11.3;der Fall der Berliner Mauer;la chute du mur de Berlin
+11.3;jn. erschießen;abattre, tuer qqn par balle
+11.3;jn. ein/sperren;incarcérer, emprisonner qqn
+11.3;jn. fest/nehmen;arrêter qqn
+11.3;die Wende;le "tournant", le processus de changement social et politique en RDA qui a conduit à la réunification
+11.3;vereinigen;réunir
+11.3;die Wiedervereinnigung;la réunification
+11.3;die deutsche Einheit;l'unité allemande
+11.3;beeinflussen;influencer
+11.3;der Einfluss(¨-e);l'influence
+11.3;prägen;marquer
+11.3;die Prägung;la marque, l'empreinte
+11.4;die wirschaft;l'économie
+11.4;stark;fort
+11.4;schwach;faible
+11.4;die Kluft;le fossé
+11.4;arbeitlos sein;être au chômage
+11.4;die Arbeitlosigkeit;le chômage
+11.4;jn. beschäftigen;employer qqn
+11.4;die Vollbeschäftigung;le pleine emploi
+11.4;der Bereich(-e);le domaine
+11.4;die Gesundheit;la santé
+11.4;Berufstätig sein;avoir une activité professionnelle
+11.4;die Berufstätigkeit;l'activité professionnelle
+11.4;gleichberichtigt sein;avoir les mêmes droits
+11.4;die Gleichberichtigung;l'egalité des droits
+11.9;der Arbeitslose;le chômeur
+11.9;niemand;personne
+11.9;sich ein/bilden;s'imaginer à tort
+11.9;per Sprachfeld;par commande vocale
+11.9;die Tastadur;le clavier
+11.9;sich die Mühe machen;se donner la peine, faire l'effort de
+11.9;die Lieferdrohne;le drone livreur
+11.9;der Zufall;le hasard
+11.9;die überaschung;la surprise
+11.9;etw. errechnen;calculer qqch
+11.9;das Fürstentum(¨-er);la principauté
+11.9;mit etw. brechen;rompre avec qqch
+11.9;verhinden;empêcher
+11.9;die Wiederherstellung;la restauration
+11.9;wieder her/stellen;rétablir
+11.9;der Sohn;le fils
+A.1;jm. etw. schenken;offrir qqch à qqn
+A.2;natürlich;Naturellement
