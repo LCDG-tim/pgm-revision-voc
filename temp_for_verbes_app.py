@@ -53,9 +53,11 @@ class Listv_entry:
         self.frame = frame
         self.i = i
         self.j = j
+        self.main_bg = "#777777"
         self.entry = tk.Entry(
                 self.frame,
                 width=(20, 29)[j == 4],
+                disabledforeground="#000000",
                 justify="center"
             )
         self.entry.grid(
@@ -179,7 +181,7 @@ def list_verbes() -> dict:
                             "laufen",
                             "läuft",
                             "lief",
-                            "ist gelaufen",
+                            "ist ... gelaufen",
                             "courir"
                         )
                 ],
@@ -647,6 +649,9 @@ class App:
                 self.winv.winfo_screenheight()
             )
 
+        self.number_lines = 10
+        self.all_points = []
+        self.number_session = 0
         self.main_bg = "#777777"
         self.voca = list_verbes()
 
@@ -656,11 +661,9 @@ class App:
 
         self.list_vframe = tk.Frame(self.masterv_frame, bg=self.main_bg)
 
-        self.number_lignes = 10
-
         self.list_ventry = [
                 Listv_entry(self.list_vframe, i, j)
-                for i in range(self.number_lignes)
+                for i in range(self.number_lines)
                 for j in range(5)
             ]
         self.put_list()
@@ -671,27 +674,114 @@ class App:
 
         self.menu_bar = tk.Menu(self.winv)
 
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
+
+        self.file_menu.add_command(
+                label="recap session score",
+                command=self.score_session_recap
+            )
+
+        self.file_menu.add_command(
+                label="quitter",
+                command=self.quit_winv
+            )
+
+        self.menu_bar.add_cascade(menu=self.file_menu, label="Fichier")
+
+        self.command_menu = tk.Menu(self.menu_bar, tearoff=0)
+
+        self.command_menu.add_command(
+                label="changer les verbes",
+                command=self.put_list
+            )
+
+        self.command_menu.add_command(
+                label="verifier",
+                command=self.verif
+            )
+
+        self.command_menu.add_command(
+                label="score session recap",
+                command=self.score_session_recap
+            )
+
+        self.menu_bar.add_cascade(menu=self.command_menu, label="Commandes")
+
+        self.winv.config(menu=self.menu_bar)
+
         self.winv.mainloop()
 
+    def clear_lines(self) -> None:
+        for i in self.list_ventry:
+            i.entry.delete(0, tk.END)
+
     def put_list(self) -> None:
+        self.clear_lines()
+        self.number_session += 1
         self.lines = []
 
-        for i in range(1, self.number_lignes + 1):
+        for i in range(1, self.number_lines + 1):
             lst = rdm.choice(list(self.voca.items()))
-            word: Verbe = self.voca.get(lst[0])[rdm.randint(0, len(lst[1]) - 1)]
+            word: Verbe = self.voca.get(lst[0])[
+                    rdm.randint(0, len(lst[1]) - 1)
+                ]
 
             self.lines.append(
                     word
                 )
             j = 5 * i - 1
+            self.list_ventry[j].entry["state"] = "normal"
             self.list_ventry[j].entry.delete(0, tk.END)
             self.list_ventry[j].entry.insert(0, word.get_sens())
+            self.list_ventry[j].entry["state"] = "disabled"
 
     def verif(self) -> None:
-        pass
+        points = 0
+        for i in range(self.number_lines):
+            error = 0
+            for j in range(5 * i, 5 * i + 4):
+                if self.list_ventry[j].entry.get() != \
+                        self.lines[i].get_list()[j % 5]:
+                    error += 1
+            if error == 0:
+                points += 1
+            elif error == 1:
+                points += .5
+
+        recap_points_str = "{} / {} ou {} % de bonnes réponses".format(
+                        points,
+                        self.number_lines,
+                        round(points * 100 / self.number_lines, 1)
+                    )
+
+        print(recap_points_str)
+
+        self.all_points.append(recap_points_str)
 
     def score_session_recap(self) -> None:
-        pass
+        self.winssr = tk.Tk()
+        self.winssr.geometry("500x400+340+230")
+        self.winssr.maxsize(
+                self.winssr.winfo_screenwidth(),
+                self.winssr.winfo_screenwidth()
+            )
+        self.winssr.minsize(500, 400)
+        self.winssr.config(background=self.main_bg)
+
+        self.master_ssrframe = tk.Frame(self.winssr)
+        self.list_ssrentry = []
+        for i in range(self.number_session):
+            zone = Listv_entry(self.master_ssrframe, i, 0)
+            if i < len(self.all_points):
+                zone.entry.insert(0, self.all_points[i])
+            self.list_ssrentry.append(
+                    zone
+                )
+        self.master_ssrframe.pack(expand=tk.YES)
+
+    def quit_winv(self) -> None:
+        self.winv.quit()
+        self.winv.destroy()
 
 
 if __name__ == "__main__":
