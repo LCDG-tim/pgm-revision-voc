@@ -3,6 +3,10 @@
 # les il signifie le programme
 
 
+import tkinter as tk
+import random as rdm
+
+
 class Verbe:
 
     def __init__(
@@ -33,11 +37,44 @@ class Verbe:
     def get_parfait(self) -> str:
         return self.parfait
 
+    def get_sens(self) -> str:
+        return self.sens
+
     def get_list(self) -> list:
         return self.list
 
     def get_save_str(self) -> list:
         return self.save_str
+
+
+class Listv_entry:
+
+    def __init__(self, frame: tk.Frame, i: int, j: int):
+        self.frame = frame
+        self.i = i
+        self.j = j
+        self.entry = tk.Entry(
+                self.frame,
+                width=(20, 29)[j == 4],
+                justify="center"
+            )
+        self.entry.grid(
+                row=i,
+                column=j,
+                sticky=tk.W
+            )
+
+    def get_frame(self) -> None:
+        return self.frame
+
+    def get_i(self) -> int:
+        return self.i
+
+    def get_j(self) -> int:
+        return self.j
+
+    def get_entry(self) -> int:
+        return self.entry
 
 
 def list_verbes() -> dict:
@@ -592,6 +629,70 @@ def save() -> None:
 class App:
 
     def __init__(self):
+        self.winv = tk.Tk()
+        self.winv.geometry(
+                "{}x{}+{}+{}".format(
+                        self.winv.winfo_screenwidth()//2,
+                        self.winv.winfo_screenheight()//2,
+                        self.winv.winfo_screenwidth()//4,
+                        self.winv.winfo_screenheight()//4
+                    )
+            )
+        self.winv.minsize(
+                self.winv.winfo_screenwidth()//4,
+                self.winv.winfo_screenheight()//4
+            )
+        self.winv.maxsize(
+                self.winv.winfo_screenwidth(),
+                self.winv.winfo_screenheight()
+            )
+
+        self.main_bg = "#777777"
+        self.voca = list_verbes()
+
+        self.winv.config(bg=self.main_bg)
+
+        self.masterv_frame = tk.Frame(self.winv, bg=self.main_bg)
+
+        self.list_vframe = tk.Frame(self.masterv_frame, bg=self.main_bg)
+
+        self.number_lignes = 10
+
+        self.list_ventry = [
+                Listv_entry(self.list_vframe, i, j)
+                for i in range(self.number_lignes)
+                for j in range(5)
+            ]
+        self.put_list()
+
+        self.list_vframe.pack()
+
+        self.masterv_frame.pack(expand=tk.YES)
+
+        self.menu_bar = tk.Menu(self.winv)
+
+        self.winv.mainloop()
+
+    def put_list(self) -> None:
+        self.lines = []
+
+        for i in range(1, self.number_lignes + 1):
+            lst = rdm.choice(list(self.voca.items()))
+            word: Verbe = self.voca.get(lst[0])[rdm.randint(0, len(lst[1]) - 1)]
+
+            self.lines.append(
+                    word
+                )
+            j = 5 * i - 1
+            self.list_ventry[j].entry.delete(0, tk.END)
+            self.list_ventry[j].entry.insert(0, word.get_sens())
+
+    def verif(self) -> None:
         pass
 
-save()
+    def score_session_recap(self) -> None:
+        pass
+
+
+if __name__ == "__main__":
+    App()
