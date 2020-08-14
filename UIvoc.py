@@ -687,4 +687,4 @@ class App:
 
 
 if __name__ == "__main__":
-    main = App()
+    MAIN = App()
