@@ -55,10 +55,14 @@ class Verbe:
         """
         return self.sens
 
-    def get_list(self) -> list:
+    def get_list(self, k: int = None) -> list or str:
         """return the list
         """
-        return self.list
+        if k is None:
+            return_val = self.list
+        else:
+            return_val = self.list[k]
+        return return_val
 
     def get_save_str(self) -> list:
         """return the str for saving
@@ -612,10 +616,11 @@ def save(liste: dict = list_verbes()) -> None:
     """
     with open("liste_verbes.csv", "w") as file:
         file.write("liste;infinitif;présent;preterit;parfait;sens;\n")
-        for liste in liste:
-            for j in liste.get(liste):
+        for lst in liste:
+            lst: list
+            for j in liste.get(lst):
                 j: Verbe
-                file.write(liste + ";" + j.get_save_str())
+                file.write(lst + ";" + j.get_save_str())
 
 
 if __name__ == "__main__":

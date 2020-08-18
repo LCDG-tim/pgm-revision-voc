@@ -122,6 +122,23 @@ class App:
         self.voca = list_verbes()
         self.winssr_running = False
         self.button_font = ("calibri", 12)
+        self.list_asked = None
+        self.mod_current = None
+        self.reset_after_session = True
+
+        self.mod_cml_1 = "Toute la colonne 1 complétée"
+        self.mod_cml_2 = "Toute la colonne 2 complétée"
+        self.mod_cml_3 = "Toute la colonne 3 complétée"
+        self.mod_cml_4 = "Toute la colonne 4 complétée"
+        self.mod_cml_5 = "Toute la colonne 5 complétée"
+        self.mod_cml_6 = [0, 1, 2, 3, 4]
+        self.mod_cml_7 = [1, 2, 3, 4, 0]
+        self.mod_cml_8 = [2, 3, 4, 0, 1]
+        self.mod_cml_9 = [3, 4, 0, 1, 2]
+        self.mod_cml_10 = [4, 0, 1, 2, 3]
+        self.mod_cml_11 = "Aléatoire"
+        self.list_asked = 4
+        self.mod_current = self.mod_cml_5
 
         self.winv.config(bg=self.main_bg)
 
@@ -227,6 +244,7 @@ class App:
         """
         for i in self.list_ventry:
             i: ListvEntry
+            i.entry["state"] = "normal"
             i.entry.delete(0, tk.END)
             i.entry["background"] = self.entry_bg
 
@@ -235,21 +253,57 @@ class App:
         """
         self.clear_lines()
         self.lines = []
+        k = 0
 
-        for i in range(1, self.number_lines + 1):
-            lst = rdm.choice(list(self.voca.items()))
-            word: Verbe = self.voca.get(lst[0])[
-                    rdm.randint(0, len(lst[1]) - 1)
-                ]
+        for i in range(self.number_lines):
+            lst1, lst2 = rdm.choice(list(self.voca.items()))
+            indix: Verbe = rdm.randint(0, len(lst2) - 1)
+            word: Verbe = lst2[indix]
 
             self.lines.append(
                     word
                 )
-            j = 5 * i - 1
-            self.list_ventry[j].entry["state"] = "normal"
-            self.list_ventry[j].entry.delete(0, tk.END)
-            self.list_ventry[j].entry.insert(0, word.get_sens())
-            self.list_ventry[j].entry["state"] = "disabled"
+
+            del self.voca[lst1][indix]
+            if not self.voca[lst1]:
+                del self.voca[lst1]
+
+            if isinstance(self.list_asked, int):
+                j = 5 * i + self.list_asked
+                self.list_ventry[j].entry["state"] = "normal"
+                self.list_ventry[j].entry.delete(0, tk.END)
+                self.list_ventry[j].entry.insert(
+                        0,
+                        word.get_list(self.list_asked)
+                    )
+                self.list_ventry[j].entry["state"] = "disabled"
+
+            elif isinstance(self.list_asked, list):
+                k %= 5
+                colonne = self.list_asked[k]
+                j = 5 * i + colonne
+                self.list_ventry[j].entry["state"] = "normal"
+                self.list_ventry[j].entry.delete(0, tk.END)
+                self.list_ventry[j].entry.insert(
+                        0,
+                        word.get_list(colonne)
+                    )
+                self.list_ventry[j].entry["state"] = "disabled"
+                k += 1
+
+            else:
+                colonne = rdm.randint(0, 4)
+                j = 5 * i + colonne
+                self.list_ventry[j].entry["state"] = "normal"
+                self.list_ventry[j].entry.delete(0, tk.END)
+                self.list_ventry[j].entry.insert(
+                        0,
+                        word.get_list(colonne)
+                    )
+                self.list_ventry[j].entry["state"] = "disabled"
+
+        if self.reset_after_session:
+            self.voca = list_verbes()
 
     def verif(self) -> None:
         """verify the answer
@@ -347,21 +401,21 @@ class App:
             )
         self.quit_vbutton.pack(fill=tk.X, pady=4)
 
-        self.b_button = tk.Button(
+        self.reset_as_button = tk.Button(
                 self.master_oframe,
-                text="{name}",
+                text="Ne pas réintialiser à chaque session",
                 font=self.button_font,
-                # command=
+                command=self.reset_as
             )
-        self.b_button.pack(fill=tk.X, pady=4)
+        self.reset_as_button.pack(fill=tk.X, pady=4)
 
-        self.c_button = tk.Button(
+        self.choice_mod_button = tk.Button(
                 self.master_oframe,
-                text="{name}",
+                text="Choisir le modéle",
                 font=self.button_font,
-                # command=
+                command=self.choice_model_l
             )
-        self.c_button.pack(fill=tk.X, pady=4)
+        self.choice_mod_button.pack(fill=tk.X, pady=4)
 
         self.d_button = tk.Button(
                 self.master_oframe,
@@ -400,6 +454,14 @@ class App:
     def quit_winv_by_option(self) -> None:
         self.quit_wino()
         self.quit_winv()
+
+    def reset_as(self) -> None:
+        if self.reset_after_session:
+            self.reset_as_button["text"] = "Ne pas réintialiser à chaque" \
+                "session"
+        else:
+            self.reset_as_button["text"] = "Réinitialiser à chaque session"
+        self.reset_after_session = not self.reset_after_session
 
     def quit_wino(self) -> None:
         """quit wino
@@ -443,7 +505,6 @@ class App:
         self.winc.config(background=self.main_bg)
 
         self.master_cframe = tk.Frame(self.winc, background="#333333")
-        self.list_centry = []
         for i in range(self.number_lines):
             for j in range(5):
                 zone = tk.Label(
@@ -471,9 +532,252 @@ class App:
 
         self.winc.mainloop()
 
+    def choice_model_l(self) -> None:
+        self.wincml = tk.Tk()
+        self.wincml.geometry("300x500+20+100")
+        self.wincml.minsize(300, 500)
+        self.wincml.maxsize(
+                self.wincml.winfo_screenwidth(),
+                self.wincml.winfo_screenheight()
+            )
+        self.wincml.config(background=self.main_bg)
+
+        self.master_cmlframe = tk.Frame(self.wincml, background=self.main_bg)
+
+        self.list_asked_lab = tk.Label(
+                self.master_cmlframe,
+                background=self.main_bg
+            )
+        self.list_asked_lab.pack(expand=tk.YES)
+
+        self.refresh_lab_cml()
+
+        self.button_cmlframe1 = tk.Frame(self.master_cmlframe, bg=self.main_bg)
+
+        all_colonne_1 = tk.Button(
+                self.button_cmlframe1,
+                text=self.mod_cml_1,
+                command=self.set_list_sel_1
+            )
+        all_colonne_1.grid(row=1, column=0, sticky=tk.W, pady=3)
+
+        all_colonne_2 = tk.Button(
+                self.button_cmlframe1,
+                text=self.mod_cml_2,
+                command=self.set_list_sel_2
+            )
+        all_colonne_2.grid(row=2, column=0, sticky=tk.W, pady=3)
+
+        all_colonne_3 = tk.Button(
+                self.button_cmlframe1,
+                command=self.set_list_sel_3,
+                text=self.mod_cml_3
+            )
+        all_colonne_3.grid(row=3, column=0, sticky=tk.W, pady=3)
+
+        all_colonne_4 = tk.Button(
+                self.button_cmlframe1,
+                command=self.set_list_sel_4,
+                text=self.mod_cml_4
+            )
+        all_colonne_4.grid(row=4, column=0, sticky=tk.W, pady=3)
+
+        all_colonne_5 = tk.Button(
+                self.button_cmlframe1,
+                command=self.set_list_sel_5,
+                text=self.mod_cml_5
+            )
+        all_colonne_5.grid(row=5, column=0, sticky=tk.W, pady=3)
+
+        self.button_cmlframe2 = tk.Frame(self.master_cmlframe, bg=self.main_bg)
+
+        switch_1 = tk.Button(
+                self.button_cmlframe2,
+                command=self.set_list_sel_6,
+                text=self.mod_cml_6
+            )
+        switch_1.grid(row=6, column=0, sticky=tk.W, pady=3)
+
+        switch_2 = tk.Button(
+                self.button_cmlframe2,
+                command=self.set_list_sel_7,
+                text=self.mod_cml_7
+            )
+        switch_2.grid(row=7, column=0, sticky=tk.W, pady=3)
+
+        switch_3 = tk.Button(
+                self.button_cmlframe2,
+                command=self.set_list_sel_8,
+                text=self.mod_cml_8
+            )
+        switch_3.grid(row=8, column=0, sticky=tk.W, pady=3)
+
+        switch_4 = tk.Button(
+                self.button_cmlframe2,
+                command=self.set_list_sel_9,
+                text=self.mod_cml_9
+            )
+        switch_4.grid(row=9, column=0, sticky=tk.W, pady=3)
+
+        switch_5 = tk.Button(
+                self.button_cmlframe2,
+                command=self.set_list_sel_10,
+                text=self.mod_cml_10
+            )
+        switch_5.grid(row=10, column=0, sticky=tk.W, pady=3)
+
+        self.button_cmlframe1.pack(expand=tk.YES)
+
+        self.button_cmlframe2.pack(expand=tk.YES)
+
+        self.master_cmlframe.pack(expand=tk.YES)
+
+        self.menu_cmlbar = tk.Menu(self.wincml)
+
+        self.file_cmlmenu = tk.Menu(self.wincml, tearoff=0)
+
+        self.file_cmlmenu.add_command(
+                label="Fermer",
+                command=self.quit_wincml
+            )
+
+        self.options_cmlmenu = tk.Menu(self.menu_cmlbar, tearoff=0)
+
+        all_colonnes = tk.Menu(
+                self.options_cmlmenu,
+                tearoff=0
+            )
+
+        all_colonnes.add_command(
+                label="commence en 1",
+                command=self.set_list_sel_6
+            )
+
+        all_colonnes.add_command(
+                label="commence en 2",
+                command=self.set_list_sel_7
+            )
+
+        all_colonnes.add_command(
+                label="commence en 3",
+                command=self.set_list_sel_8
+            )
+
+        all_colonnes.add_command(
+                label="commence en 4",
+                command=self.set_list_sel_9
+            )
+
+        all_colonnes.add_command(
+                label="commence en 5",
+                command=self.set_list_sel_10
+            )
+
+        self.options_cmlmenu.add_cascade(
+                menu=all_colonnes,
+                label="Une colonne"
+            )
+
+        switchs = tk.Menu(
+                self.options_cmlmenu,
+                tearoff=0
+            )
+
+        self.options_cmlmenu.add_cascade(
+                menu=switchs,
+                label="Alternance"
+            )
+
+        self.options_cmlmenu.add_command(
+                label="Aléatoire",
+                command=self.set_list_sel_11
+            )
+
+        self.menu_cmlbar.add_cascade(label="Fichier", menu=self.file_cmlmenu)
+
+        self.menu_cmlbar.add_cascade(label="Option", menu=self.options_cmlmenu)
+
+        self.wincml.config(menu=self.menu_cmlbar)
+
+        self.wincml.mainloop()
+
+    def refresh_lab_cml(self) -> None:
+        self.list_asked_lab["text"] = "modèle courant : {}" \
+            .format(self.mod_current)
+
+    def set_list_sel_1(self) -> None:
+        self.list_asked = 0
+        self.mod_current = self.mod_cml_1
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_2(self) -> None:
+        self.list_asked = 1
+        self.mod_current = self.mod_cml_2
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_3(self) -> None:
+        self.list_asked = 2
+        self.mod_current = self.mod_cml_3
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_4(self) -> None:
+        self.list_asked = 3
+        self.mod_current = self.mod_cml_4
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_5(self) -> None:
+        self.list_asked = 4
+        self.mod_current = self.mod_cml_5
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_6(self) -> None:
+        self.list_asked = self.mod_cml_6
+        self.mod_current = self.mod_cml_6
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_7(self) -> None:
+        self.list_asked = self.mod_cml_7
+        self.mod_current = self.mod_cml_7
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_8(self) -> None:
+        self.list_asked = self.mod_cml_8
+        self.mod_current = self.mod_cml_8
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_9(self) -> None:
+        self.list_asked = self.mod_cml_9
+        self.mod_current = self.mod_cml_9
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_10(self) -> None:
+        self.list_asked = self.mod_cml_10
+        self.mod_current = self.mod_cml_10
+        self.refresh_lab_cml()
+        self.put_list()
+
+    def set_list_sel_11(self) -> None:
+        self.list_asked = self.mod_cml_11
+        self.mod_current = self.mod_cml_11
+        self.refresh_lab_cml()
+        self.put_list()
+
     def quit_winc(self) -> None:
         self.winc.quit()
         self.winc.destroy()
+
+    def quit_wincml(self) -> None:
+        self.wincml.quit()
+        self.wincml.destroy()
 
 
 if __name__ == "__main__":
