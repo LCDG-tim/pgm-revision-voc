@@ -33,10 +33,11 @@ def plus_grand(nb_a: float or int, nb_b: float or int) -> float:
 def plus_long(a: list) -> int:
     """return the lengh of the longer element of a list
     """
-    return_val: int = len(a[0])
+    return_val: int = len(a[0].get_sens())
     for i in a[1:]:
-        if len(i) > return_val:
-            return_val: int = len(i)
+        i: Verbe
+        if len(i.get_sens()) > return_val:
+            return_val: int = len(i.get_sens())
     return return_val
 
 
@@ -50,18 +51,22 @@ class ListvEntry:
         self.i = i
         self.j = j
         self.main_bg = "#777777"
-        self.entry_bg = "#f0f0f0"
+        self.entry_bg = "#a0a0a0"
         self.entry = tk.Entry(
                 self.frame,
                 width=((20, 29)[j == 4], 40)[j is None],
                 disabledforeground="#000000",
+                disabledbackground=self.entry_bg,
                 background=self.entry_bg,
+                relief="flat",
                 justify="center"
             )
         self.entry.grid(
                 row=i,
                 column=(j, 0)[j is None],
-                sticky=tk.W
+                sticky=tk.W,
+                padx=1,
+                pady=1
             )
 
     def get_frame(self) -> None:
@@ -83,6 +88,17 @@ class ListvEntry:
         """return entry
         """
         return self.entry
+
+    def set_bg(self, bg: str) -> None:
+        self.entry["background"] = bg
+
+    def set_state(self, state: str) -> None:
+        self.entry["state"] = state
+
+    def clear_self_entry(self) -> None:
+        self.set_state("normal")
+        self.entry.delete(0, tk.END)
+        self.set_bg(self.entry_bg)
 
 
 def give_geometry(window: tk.Tk) -> str:
@@ -118,7 +134,8 @@ class App:
         self.number_lines = 10
         self.all_points = []
         self.main_bg = "#777777"
-        self.entry_bg = "#f0f0f0"
+        self.entry_bg = "#a0a0a0"
+        self.title_bgcolor = "#888888"
         self.voca = list_verbes()
         self.winssr_running = False
         self.button_font = ("calibri", 12)
@@ -144,7 +161,35 @@ class App:
 
         self.masterv_frame = tk.Frame(self.winv, bg=self.main_bg)
 
-        self.list_vframe = tk.Frame(self.masterv_frame, bg=self.main_bg)
+        self.title_frame = tk.Frame(self.masterv_frame, bg="#333333")
+
+        self.column_name_list = [
+                "infinitif",
+                "present",
+                "prétérit",
+                "parfait",
+                "sens"
+            ]
+
+        for i in range(5):
+            entry = tk.Entry(
+                    self.title_frame,
+                    justify="center",
+                    background=self.entry_bg,
+                    disabledforeground="#000000",
+                    disabledbackground=self.title_bgcolor,
+                    relief="flat",
+                    width=(20, 29)[i == 4]
+                )
+            entry.grid(row=0, column=i, sticky=tk.W, padx=1, pady=1)
+
+            entry.insert(0, self.column_name_list[i])
+
+            entry["state"] = "disabled"
+
+        self.title_frame.pack(expand=tk.YES)
+
+        self.list_vframe = tk.Frame(self.masterv_frame, bg="#333333")
 
         self.list_ventry = [
                 ListvEntry(self.list_vframe, i, j)
@@ -244,9 +289,7 @@ class App:
         """
         for i in self.list_ventry:
             i: ListvEntry
-            i.entry["state"] = "normal"
-            i.entry.delete(0, tk.END)
-            i.entry["background"] = self.entry_bg
+            i.clear_self_entry()
 
     def put_list(self) -> None:
         """change the verbs asked
@@ -305,13 +348,19 @@ class App:
         if self.reset_after_session:
             self.voca = list_verbes()
 
+    def clear_bg(self) -> None:
+        for i in self.list_ventry:
+            i: ListvEntry
+            i.set_bg(self.entry_bg)
+
     def verif(self) -> None:
         """verify the answer
         """
         points = 0
+        self.clear_bg()
         for i in range(self.number_lines):
             error = 0
-            for j in range(5 * i, 5 * i + 4):
+            for j in range(5 * i, 5 * (i + 1)):
                 if self.list_ventry[j].entry.get() != \
                         self.lines[i].get_list()[j % 5]:
                     error += 1
@@ -485,8 +534,8 @@ class App:
         """table correction
         """
         p_l_lines = plus_long(self.lines)
-        width_winc = 8 * p_l_lines + 670
-        height_winc = int(self.winv.winfo_screenheight() // 3)
+        width_winc = 8 * p_l_lines + 700
+        height_winc = int(self.winv.winfo_screenheight() // 3) + 20
         self.winc = tk.Tk()
         self.winc.geometry(
                 "{}x{}+{}+{}".format(
@@ -505,12 +554,15 @@ class App:
         self.winc.config(background=self.main_bg)
 
         self.master_cframe = tk.Frame(self.winc, background="#333333")
-        for i in range(self.number_lines):
+        for i in range(self.number_lines + 1):
             for j in range(5):
                 zone = tk.Label(
                         self.master_cframe,
-                        text=self.lines[i].get_list()[j],
-                        background="#A0A0A0",
+                        text=(
+                                self.lines[i - 1].get_list(j),
+                                self.column_name_list[j]
+                            )[i == 0],
+                        background=(self.entry_bg, self.title_bgcolor)[i == 0],
                         width=(20, plus_grand(29, p_l_lines))[j == 4]
                     )
                 zone.grid(row=i, column=j, sticky=tk.W, padx=1, pady=1)

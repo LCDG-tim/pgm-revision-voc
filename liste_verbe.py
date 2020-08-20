@@ -87,7 +87,7 @@ def list_verbes() -> dict:
                             "fährt",
                             "fuhr",
                             "ist ... gefahren",
-                            "aller (avec un moyen de locomotion)"
+                            "aller (avec un moyen)"
                         ),
                     Verbe(
                             "tragen",
