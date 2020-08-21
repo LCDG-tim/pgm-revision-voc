@@ -5,6 +5,8 @@
 """temp for the main code
 """
 
+import re
+
 import tkinter as tk
 import random as rdm
 
@@ -41,6 +43,11 @@ def plus_long(a: list) -> int:
     return return_val
 
 
+def affiche(args: "Any") -> None:
+    text = "\n_______________ {} _______________\n".format(args)
+    print(text)
+
+
 class ListvEntry:
 
     """object for create a table of entry
@@ -52,11 +59,12 @@ class ListvEntry:
         self.j = j
         self.main_bg = "#777777"
         self.entry_bg = "#a0a0a0"
+        self.dis_bg_color = "#888888"
         self.entry = tk.Entry(
                 self.frame,
                 width=((20, 29)[j == 4], 40)[j is None],
                 disabledforeground="#000000",
-                disabledbackground=self.entry_bg,
+                disabledbackground=self.dis_bg_color,
                 background=self.entry_bg,
                 relief="flat",
                 justify="center"
@@ -95,8 +103,13 @@ class ListvEntry:
     def set_state(self, state: str) -> None:
         self.entry["state"] = state
 
+    def set_dis_bg(self, new_bg: str) -> None:
+        if re.findall(r"^#[a-fA-F0-9]{6}$", new_bg):
+            self.entry["disabledbackground"] = new_bg
+
     def clear_self_entry(self) -> None:
         self.set_state("normal")
+        self.set_dis_bg(self.dis_bg_color)
         self.entry.delete(0, tk.END)
         self.set_bg(self.entry_bg)
 
@@ -114,12 +127,19 @@ class App:
 
     def __init__(self):
         self.winv = tk.Tk()
+
+        self.SCREEN_WIDTH = self.winv.winfo_screenwidth()
+        self.SCREEN_HEIGHT = self.winv.winfo_screenheight()
+
+        width = int(self.SCREEN_WIDTH // 1.8)
+        height = int(self.SCREEN_HEIGHT // 2.25)
+
         self.winv.geometry(
                 "{}x{}+{}+{}".format(
-                        self.winv.winfo_screenwidth()//2,
-                        self.winv.winfo_screenheight()//2,
-                        self.winv.winfo_screenwidth()//4,
-                        self.winv.winfo_screenheight()//4
+                        width,
+                        height,
+                        self.SCREEN_WIDTH // 2 - width // 2,
+                        self.SCREEN_HEIGHT // 2 - height // 2
                     )
             )
         self.winv.minsize(
@@ -277,8 +297,29 @@ class App:
                 label="Score session recap",
                 command=self.score_session_recap
             )
+        self.command_menu.add_command(
+                label="Options",
+                command=self.options
+            )
+
+        self.option_vmenu = tk.Menu(self.menu_bar, tearoff=0)
+
+        self.option_vmenu.add_command(
+                label="Pas de reset",
+                command=self.reset_as
+            )
+
+        self.option_vmenu.add_command(
+                label="Choix du modèle",
+                command=self.choice_model_l
+            )
 
         self.menu_bar.add_cascade(menu=self.command_menu, label="Commandes")
+
+        self.menu_bar.add_cascade(
+                label="Options",
+                menu=self.option_vmenu
+            )
 
         self.winv.config(menu=self.menu_bar)
 
@@ -287,13 +328,16 @@ class App:
     def clear_lines(self) -> None:
         """clear all the table
         """
-        for i in self.list_ventry:
+        for j, i in enumerate(self.list_ventry, start=1):
             i: ListvEntry
             i.clear_self_entry()
 
     def put_list(self) -> None:
         """change the verbs asked
         """
+
+        print("")
+
         self.clear_lines()
         self.lines = []
         k = 0
@@ -349,7 +393,7 @@ class App:
             self.voca = list_verbes()
 
     def clear_bg(self) -> None:
-        for i in self.list_ventry:
+        for j, i in enumerate(self.list_ventry, start=1):
             i: ListvEntry
             i.set_bg(self.entry_bg)
 
@@ -361,10 +405,15 @@ class App:
         for i in range(self.number_lines):
             error = 0
             for j in range(5 * i, 5 * (i + 1)):
+                self.list_ventry[j]: ListvEntry
                 if self.list_ventry[j].entry.get() != \
-                        self.lines[i].get_list()[j % 5]:
+                        self.lines[i].get_list(j % 5):
                     error += 1
-                    self.list_ventry[j].entry["background"] = "#A52020"
+                    self.list_ventry[j].set_bg("#A56060")
+                else:
+                    self.list_ventry[j].set_dis_bg(self.entry_bg)
+                    self.list_ventry[j].set_state("disabled")
+
             if error == 0:
                 points += 1
             elif error == 1:
@@ -470,7 +519,7 @@ class App:
                 self.master_oframe,
                 text="{name}",
                 font=self.button_font,
-                # command=
+                # command=self.a
             )
         self.d_button.pack(fill=tk.X, pady=4)
 
