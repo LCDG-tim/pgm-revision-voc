@@ -43,9 +43,17 @@ def plus_long(a: list) -> int:
     return return_val
 
 
-def affiche(args: "Any") -> None:
+def affiche(args) -> None:
     text = "\n_______________ {} _______________\n".format(args)
     print(text)
+
+
+def disabled_entry(entry: tk.Entry)  -> None:
+    entry['state'] = 'disabled'
+
+
+def enabled_entry(entry: tk.Entry) -> None:
+    entry['state'] = 'normal'
 
 
 class ListvEntry:
@@ -101,7 +109,12 @@ class ListvEntry:
         self.entry["background"] = bg
 
     def set_state(self, state: str) -> None:
-        self.entry["state"] = state
+        if state == "normal":
+            enabled_entry(self.entry)
+        elif state == "disabled":
+            disabled_entry(self.entry)
+        else:
+            self.entry["state"] = state
 
     def set_dis_bg(self, new_bg: str) -> None:
         if re.findall(r"^#[a-fA-F0-9]{6}$", new_bg):
@@ -205,11 +218,15 @@ class App:
 
             entry.insert(0, self.column_name_list[i])
 
-            entry["state"] = "disabled"
+            disabled_entry(entry)
 
         self.title_frame.pack(expand=tk.YES)
 
-        self.list_vframe = tk.Frame(self.masterv_frame, bg="#333333")
+        self.list_vframe = tk.Frame(
+                self.masterv_frame,
+                bg="#333333",
+                cursor="xterm"
+            )
 
         self.list_ventry = [
                 ListvEntry(self.list_vframe, i, j)
@@ -357,37 +374,37 @@ class App:
 
             if isinstance(self.list_asked, int):
                 j = 5 * i + self.list_asked
-                self.list_ventry[j].entry["state"] = "normal"
+                enabled_entry(self.list_ventry[j].entry)
                 self.list_ventry[j].entry.delete(0, tk.END)
                 self.list_ventry[j].entry.insert(
                         0,
                         word.get_list(self.list_asked)
                     )
-                self.list_ventry[j].entry["state"] = "disabled"
+                disabled_entry(self.list_ventry[j].entry)
 
             elif isinstance(self.list_asked, list):
                 k %= 5
                 colonne = self.list_asked[k]
                 j = 5 * i + colonne
-                self.list_ventry[j].entry["state"] = "normal"
+                enabled_entry(self.list_ventry[j].entry)
                 self.list_ventry[j].entry.delete(0, tk.END)
                 self.list_ventry[j].entry.insert(
                         0,
                         word.get_list(colonne)
                     )
-                self.list_ventry[j].entry["state"] = "disabled"
+                disabled_entry(self.list_ventry[j].entry)
                 k += 1
 
             else:
                 colonne = rdm.randint(0, 4)
                 j = 5 * i + colonne
-                self.list_ventry[j].entry["state"] = "normal"
+                enabled_entry(self.list_ventry[j].entry)
                 self.list_ventry[j].entry.delete(0, tk.END)
                 self.list_ventry[j].entry.insert(
                         0,
                         word.get_list(colonne)
                     )
-                self.list_ventry[j].entry["state"] = "disabled"
+                disabled_entry(self.list_ventry[j].entry)
 
         if self.reset_after_session:
             self.voca = list_verbes()
@@ -503,6 +520,7 @@ class App:
                 self.master_oframe,
                 text="Ne pas réintialiser à chaque session",
                 font=self.button_font,
+                cursor="exchange",
                 command=self.reset_as
             )
         self.reset_as_button.pack(fill=tk.X, pady=4)
