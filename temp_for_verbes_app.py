@@ -8,6 +8,7 @@
 import re
 
 import tkinter as tk
+import tkinter.messagebox as tkmbox
 import random as rdm
 
 
@@ -48,7 +49,7 @@ def affiche(args) -> None:
     print(text)
 
 
-def disabled_entry(entry: tk.Entry)  -> None:
+def disabled_entry(entry: tk.Entry) -> None:
     entry['state'] = 'disabled'
 
 
@@ -84,6 +85,7 @@ class ListvEntry:
                 padx=1,
                 pady=1
             )
+        self.entry.bind("<Alt-s>", self.insert_s7)
 
     def get_frame(self) -> None:
         """return the frame
@@ -115,6 +117,9 @@ class ListvEntry:
             disabled_entry(self.entry)
         else:
             self.entry["state"] = state
+
+    def insert_s7(self, *args) -> None:
+        self.entry.insert(tk.END, "ß")
 
     def set_dis_bg(self, new_bg: str) -> None:
         if re.findall(r"^#[a-fA-F0-9]{6}$", new_bg):
@@ -228,6 +233,8 @@ class App:
                 cursor="xterm"
             )
 
+        self.masterv_frame.bind_all("<Return>", self.test)
+
         self.list_ventry = [
                 ListvEntry(self.list_vframe, i, j)
                 for i in range(self.number_lines)
@@ -243,13 +250,21 @@ class App:
                 background=self.main_bg
             )
 
+        self.s7_button = tk.Button(
+                self.button_vframe,
+                text="ß ?",
+                font=self.button_font,
+                command=self.put_s7
+            )
+        self.s7_button.grid(row=0, column=0, sticky=tk.W, padx=4)
+
         self.verif_vbutton = tk.Button(
                 self.button_vframe,
                 text="Verification",
                 font=self.button_font,
                 command=self.verif
             )
-        self.verif_vbutton.grid(row=0, column=0, sticky=tk.W, padx=4)
+        self.verif_vbutton.grid(row=0, column=1, sticky=tk.W, padx=4)
 
         self.correction_button = tk.Button(
                 self.button_vframe,
@@ -257,7 +272,7 @@ class App:
                 font=self.button_font,
                 command=self.correction
             )
-        self.correction_button.grid(row=0, column=1, sticky=tk.W, padx=4)
+        self.correction_button.grid(row=0, column=2, sticky=tk.W, padx=4)
 
         self.chang_verb = tk.Button(
                 self.button_vframe,
@@ -265,7 +280,7 @@ class App:
                 font=self.button_font,
                 command=self.put_list
             )
-        self.chang_verb.grid(row=0, column=2, sticky=tk.W, padx=4)
+        self.chang_verb.grid(row=0, column=3, sticky=tk.W, padx=4)
 
         self.ssr_button = tk.Button(
                 self.button_vframe,
@@ -273,15 +288,15 @@ class App:
                 font=self.button_font,
                 command=self.score_session_recap
             )
-        self.ssr_button.grid(row=0, column=3, sticky=tk.W, padx=4)
+        self.ssr_button.grid(row=0, column=4, sticky=tk.W, padx=4)
 
         self.option_button = tk.Button(
                 self.button_vframe,
-                text="Option",
+                text="Options",
                 font=self.button_font,
                 command=self.options
             )
-        self.option_button.grid(row=0, column=4, sticky=tk.W, padx=4)
+        self.option_button.grid(row=0, column=5, sticky=tk.W, padx=4)
 
         self.button_vframe.pack(expand=tk.YES, pady=20)
 
@@ -342,12 +357,25 @@ class App:
 
         self.winv.mainloop()
 
+    def test(self, *args):
+        print(self.winv.focus_get())
+
     def clear_lines(self) -> None:
         """clear all the table
         """
         for j, i in enumerate(self.list_ventry, start=1):
             i: ListvEntry
             i.clear_self_entry()
+
+    def put_s7(self) -> None:
+        a = tkmbox.showinfo(
+                title="ß ?",
+                message="Pour insérer un \"ß\", presser la touche Alt et la"
+                " touche \"S\" de votre clavier simultanément",
+                parent=self.winv,
+                icon="info"
+            )
+        print(repr(a))
 
     def put_list(self) -> None:
         """change the verbs asked
