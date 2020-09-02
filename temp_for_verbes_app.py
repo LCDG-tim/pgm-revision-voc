@@ -233,7 +233,7 @@ class App:
                 cursor="xterm"
             )
 
-        self.masterv_frame.bind_all("<Return>", self.test)
+        self.masterv_frame.bind_all("<Return>", self.insert_s7)
 
         self.list_ventry = [
                 ListvEntry(self.list_vframe, i, j)
@@ -334,6 +334,8 @@ class App:
                 command=self.options
             )
 
+        self .menu_bar.add_cascade(menu=self.command_menu, label="Commandes")
+
         self.option_vmenu = tk.Menu(self.menu_bar, tearoff=0)
 
         self.option_vmenu.add_command(
@@ -346,19 +348,31 @@ class App:
                 command=self.choice_model_l
             )
 
-        self.menu_bar.add_cascade(menu=self.command_menu, label="Commandes")
-
         self.menu_bar.add_cascade(
                 label="Options",
                 menu=self.option_vmenu
+            )
+
+
+        self.insertion_vmenu = tk.Menu(self.menu_bar, tearoff=0)
+
+        self.insertion_vmenu.add_command(
+                label="ß",
+                command=self.insert_s7
+            )
+
+        self.menu_bar.add_cascade(
+                menu=self.insertion_vmenu,
+                label="Insertion"
             )
 
         self.winv.config(menu=self.menu_bar)
 
         self.winv.mainloop()
 
-    def test(self, *args):
-        print(self.winv.focus_get())
+    def insert_s7(self, *args):
+        if isinstance(self.winv.focus_get(), tk.Entry):
+            self.winv.focus_get().insert("end", "ß")
 
     def clear_lines(self) -> None:
         """clear all the table
@@ -371,11 +385,11 @@ class App:
         a = tkmbox.showinfo(
                 title="ß ?",
                 message="Pour insérer un \"ß\", presser la touche Alt et la"
-                " touche \"S\" de votre clavier simultanément",
+                " touche \"S\" de votre clavier simultanément ou aller dans"
+                " le menu Insertion puis ß",
                 parent=self.winv,
                 icon="info"
             )
-        print(repr(a))
 
     def put_list(self) -> None:
         """change the verbs asked
