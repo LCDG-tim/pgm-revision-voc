@@ -86,6 +86,9 @@ class ListvEntry:
                 pady=1
             )
         self.entry.bind("<Alt-s>", self.insert_s7)
+        self.entry.bind("<Alt-a>", self.insert_aumlaut)
+        self.entry.bind("<Alt-u>", self.insert_uumlaut)
+        self.entry.bind("<Alt-o>", self.insert_oumlaut)
 
     def get_frame(self) -> None:
         """return the frame
@@ -120,6 +123,15 @@ class ListvEntry:
 
     def insert_s7(self, *args) -> None:
         self.entry.insert(tk.END, "ß")
+
+    def insert_aumlaut(self, *arg) -> None:
+        self.entry.insert("end", "ä")
+
+    def insert_uumlaut(self, *arg) -> None:
+        self.entry.insert("end", "ü")
+
+    def insert_oumlaut(self, *arg) -> None:
+        self.entry.insert("end", "ö")
 
     def set_dis_bg(self, new_bg: str) -> None:
         if re.findall(r"^#[a-fA-F0-9]{6}$", new_bg):
@@ -353,7 +365,6 @@ class App:
                 menu=self.option_vmenu
             )
 
-
         self.insertion_vmenu = tk.Menu(self.menu_bar, tearoff=0)
 
         self.insertion_vmenu.add_command(
@@ -382,7 +393,7 @@ class App:
             i.clear_self_entry()
 
     def put_s7(self) -> None:
-        a = tkmbox.showinfo(
+        tkmbox.showinfo(
                 title="ß ?",
                 message="Pour insérer un \"ß\", presser la touche Alt et la"
                 " touche \"S\" de votre clavier simultanément ou aller dans"
