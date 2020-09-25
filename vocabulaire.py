@@ -665,6 +665,24 @@ def voc() -> dict:
                         "etw. erlauben": "autoriser",
                         "etw. verbieten": "interdire qqch",
                         "das Recht auf Bildung fordern": "soutenir le droit à l'éducation"
+                        },
+                13.3: {
+                        "der Schauspieler/-in": "l'acteur, l'actrice",
+                        "berühmt": "célébre",
+                        "Erfolg haben": "avoir du succés (haben)",
+                        "Erlogreich sein": "avoir du succés (sein)",
+                        "dumm": "bète, idiots",
+                        "klug": "intelligent",
+                        "etwas erfinden": "inventer qqch",
+                        "entwickeln": "développer",
+                        "nützlich": "utile",
+                        "nutzlos": "inutile",
+                        "die Wissenschaft": "la science",
+                        "die Wissenschaftler/-in": "le / la scientifique",
+                        "zu etwas bei/tragen": "contribuer à qqch",
+                        "das Patent": "le brevet industriel",
+                        "jn. (nicht) erst nehmen": "(ne pas) prendre qqn au sérieux",
+                        "unterschätzen": "sous-estimer"
                         }
                     }
     assert isinstance(vocabulaire, dict), "vocabulaire n'est pas un dict"
