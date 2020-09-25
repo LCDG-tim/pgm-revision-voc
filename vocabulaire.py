@@ -635,6 +635,36 @@ def voc() -> dict:
                         },
                 "A.2": {
                         "natürlich": "Naturellement"
+                        },
+                13.1: {
+                        "sich um den Haushalt kümmern": "faire les tâches ménagère",
+                        "die Aufgabenteilung": "le partage des tâches",
+                        "wählen": "voter",
+                        "das Wahlrecht": "le droit de vote",
+                        "gleichberegtigt sein": "avoir les mêmes droits",
+                        "die Gleichberegtigung": "l'égalité des droits",
+                        "Karriere machen": "faire carière",
+                        "berufstätig sein": "exercer un métier",
+                        "Hausfrau sein": "être femme au foyer",
+                        "die Gleichstellung zwischen Mann und Frau": "l'égalité femme-homme",
+                        "sich wandeln": "changer, évoluer"
+                        },
+                13.2: {
+                        "gegen jn. Vorurteile haben": "avoir des préjugés contre qqn",
+                        "die Bildungsmöglichkeit(-en)": "l'accès à l'éducation",
+                        "die Studiensmöglichkeit(-en)": "l'accès aux études",
+                        "frauentypische Arbeiten": "métiers pour les femmes",
+                        "klug sein": "être intellig",
+                        "fähig sein": "être malin",
+                        "jn. diskriminieren": "diskriminer qqn",
+                        "von etw. ausgeschlossen sein": "être exclu de qqch",
+                        "das Unrecht": "l'injustice",
+                        "die gleichen Rechten haben": "avoir les mêmes droits",
+                        "für Chancengleichheit kämpfen": "se battre pour l'égalité des chances",
+                        "die Frauenrechtlerin(-nen)": "la féministe",
+                        "etw. erlauben": "autoriser",
+                        "etw. verbieten": "interdire qqch",
+                        "das Recht auf Bildung fordern": "soutenir le droit à l'éducation"
                         }
                     }
     assert isinstance(vocabulaire, dict), "vocabulaire n'est pas un dict"

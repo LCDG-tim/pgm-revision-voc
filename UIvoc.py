@@ -101,6 +101,10 @@ class App:
             )
         self.second_entry.pack(fill=tk.X, expand=tk.YES)
 
+        self.second_entry.bind("<Return>", self.verif)
+        self.second_entry.bind("<Control-s>", self.add_score)
+        self.second_entry.bind("<Shift-Return>", self.change_word)
+
         # set & display the text to see if the second entry is True or False
         self.verif_label = tk.Label(
                 self.left_frame,
@@ -178,15 +182,6 @@ class App:
             )
         self.only_a_list.pack(fill=tk.X, expand=tk.YES)
 
-        # set & display the button to change the word asked
-        self.next_word = tk.Button(
-                self.button_frame,
-                text="Next word",
-                font=self.main_font,
-                command=self.change_word
-            )
-        self.next_word.pack(fill=tk.X, expand=tk.YES)
-
         # set & display the button to verify if the word in the second entry
         # is True or False
         self.verif_button = tk.Button(
@@ -196,6 +191,15 @@ class App:
                 command=self.verif
             )
         self.verif_button.pack(fill=tk.X, expand=tk.YES)
+
+        # set & display the button to change the word asked
+        self.next_word = tk.Button(
+                self.button_frame,
+                text="Next word",
+                font=self.main_font,
+                command=self.change_word
+            )
+        self.next_word.pack(fill=tk.X, expand=tk.YES)
 
         # set & display the Button to display the solution, the translation of
         # the word
@@ -609,7 +613,7 @@ class App:
         self.good_replies -= 1
         self.update_score_label()
 
-    def add_score(self) -> None:
+    def add_score(self, evt=None) -> None:
         self.good_replies += 1
         self.update_score_label()
 
@@ -629,7 +633,7 @@ class App:
         self.windows.quit()
         self.windows.destroy()
 
-    def verif(self) -> None:
+    def verif(self, evt=None) -> None:
         if self.second_entry.get() == self.answer:
             self.verif_label["text"] = "Bon"
             self.verif_label["bg"] = "#20A520"
@@ -648,7 +652,7 @@ class App:
         self.window.quit()
         self.window.destroy()
 
-    def change_word(self) -> None:
+    def change_word(self, evt=None) -> None:
         self.number_words += 1
         self.score_label["text"] = "{} / {} or {} % of right replies".format(
                         self.good_replies,
@@ -672,7 +676,7 @@ class App:
                 self.answer
             )
 
-    def change_language(self) -> None:
+    def change_language(self, evt=None) -> None:
         self.french_first = not(self.french_first)
         self.language_button["text"] = "switch language to {}".format(
                         ("French", "German")[self.french_first]

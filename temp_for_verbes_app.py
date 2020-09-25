@@ -245,7 +245,7 @@ class App:
                 cursor="xterm"
             )
 
-        self.masterv_frame.bind_all("<Return>", self.insert_s7)
+        self.masterv_frame.bind_all("<Return>", self.verif)
 
         self.list_ventry = [
                 ListvEntry(self.list_vframe, i, j)
@@ -467,7 +467,7 @@ class App:
             i: ListvEntry
             i.set_bg(self.entry_bg)
 
-    def verif(self) -> None:
+    def verif(self, evt=None) -> None:
         """verify the answer
         """
         points = 0
