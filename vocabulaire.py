@@ -671,7 +671,7 @@ def voc() -> dict:
                         "berühmt": "célébre",
                         "Erfolg haben": "avoir du succés (haben)",
                         "Erlogreich sein": "avoir du succés (sein)",
-                        "dumm": "bète, idiots",
+                        "dumm": "bête, idiots",
                         "klug": "intelligent",
                         "etwas erfinden": "inventer qqch",
                         "entwickeln": "développer",

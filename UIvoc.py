@@ -34,7 +34,7 @@ class List_button:
                 command=self.give_name
             )
 
-    def give_name(self) -> None:
+    def give_name(self, evt=None) -> None:
         self.main.liste_cible = self.name
         self.main.only_a_list.set(1)
         self.main.list_label["text"] = \
@@ -46,7 +46,7 @@ class App:
     """app de mot de vocabulaire
     """
 
-    def __init__(self) -> None:
+    def __init__(self, evt=None) -> None:
         # =====================================================================
         # init & config window
 
@@ -68,6 +68,7 @@ class App:
 
         # set main frame
         self.master_frame = tk.Frame(self.window, bg="#777777")
+        self.master_frame.bind("<Escape>", self.quit_window)
 
         # =====================================================================
         # set left window
@@ -100,8 +101,13 @@ class App:
                 font=self.main_font
             )
         self.second_entry.pack(fill=tk.X, expand=tk.YES)
+        self.second_entry.bind("<Alt-s>", self.insert_s7)
+        self.second_entry.bind("<Alt-a>", self.insert_aumlaut)
+        self.second_entry.bind("<Alt-u>", self.insert_uumlaut)
+        self.second_entry.bind("<Alt-o>", self.insert_oumlaut)
 
         self.second_entry.bind("<Return>", self.verif)
+        self.second_entry.bind("<Control-a>", self.give_solution)
         self.second_entry.bind("<Control-s>", self.add_score)
         self.second_entry.bind("<Shift-Return>", self.change_word)
 
@@ -318,7 +324,19 @@ class App:
         self.window.mainloop()
         # =====================================================================
 
-    def list_app(self) -> None:
+    def insert_s7(self, *args) -> None:
+        self.second_entry.insert(tk.END, "ß")
+
+    def insert_aumlaut(self, *arg) -> None:
+        self.second_entry.insert("end", "ä")
+
+    def insert_uumlaut(self, *arg) -> None:
+        self.second_entry.insert("end", "ü")
+
+    def insert_oumlaut(self, *arg) -> None:
+        self.second_entry.insert("end", "ö")
+
+    def list_app(self, evt=None) -> None:
         # config window
         self.windowl = tk.Tk()
         self.windowl.geometry("200x650+100+20")
@@ -331,6 +349,7 @@ class App:
 
         # set master frame
         self.masterl_frame = tk.Frame(self.windowl, bg="#777777")
+        self.masterl_frame.bind("<Escape>", self.quit_windowl)
 
         # set the left and right frame
         self.leftl_frame = tk.Frame(self.masterl_frame, bg="#777777")
@@ -383,11 +402,11 @@ class App:
         # lauch the window
         self.windowl.mainloop()
 
-    def quit_windowl(self) -> None:
+    def quit_windowl(self, evt=None) -> None:
         self.windowl.quit()
         self.windowl.destroy()
 
-    def score_manage(self) -> None:
+    def score_manage(self, evt=None) -> None:
         self.windows = tk.Tk()
         self.windows.geometry("600x350+200+200")
         self.windows.minsize(600, 350)
@@ -396,11 +415,13 @@ class App:
                 self.windows.winfo_screenheight()
             )
         self.windows.config(bg="#777777")
+        self.windows.bind("<Escape>", self.quit_windows)
 
         self.save_value = (self.good_replies, self.number_words)
 
         # set master frame
         self.masters_frame = tk.Frame(self.windows, bg="#A0A0A0")
+        self.masters_frame.bind("<Escape>", self.quit_windows)
 
         # set and display the main score display
         self.current_score = tk.Label(
@@ -594,7 +615,7 @@ class App:
         # lauch the window
         self.windows.mainloop()
 
-    def update_score_label(self) -> None:
+    def update_score_label(self, evt=None) -> None:
         self.score_label["text"] = "{} / {} or {} % of right replies".format(
                         self.good_replies,
                         self.number_words,
@@ -609,7 +630,7 @@ class App:
         self.number_label["text"] = "number of words asked : " \
             "{}".format(self.number_words)
 
-    def remove_good_reply(self) -> None:
+    def remove_good_reply(self, evt=None) -> None:
         self.good_replies -= 1
         self.update_score_label()
 
@@ -617,19 +638,19 @@ class App:
         self.good_replies += 1
         self.update_score_label()
 
-    def remove_word_asked(self) -> None:
+    def remove_word_asked(self, evt=None) -> None:
         self.number_words -= 1
         self.update_score_label()
 
-    def add_word_asked(self) -> None:
+    def add_word_asked(self, evt=None) -> None:
         self.number_words += 1
         self.update_score_label()
 
-    def cancel_wins(self) -> None:
+    def cancel_wins(self, evt=None) -> None:
         self.good_replies, self.number_words = self.save_value
         self.update_score_label()
 
-    def quit_windows(self) -> None:
+    def quit_windows(self, evt=None) -> None:
         self.windows.quit()
         self.windows.destroy()
 
@@ -641,14 +662,14 @@ class App:
             self.verif_label["text"] = "Faux"
             self.verif_label["bg"] = "#A52020"
 
-    def choix(self) -> tuple:
+    def choix(self, evt=None) -> tuple:
         if not self.only_a_list.get():
             self.liste_cible = random.choice(list(voc().keys()))
         self.list_label["text"] = "liste étudiée : {}".format(self.liste_cible)
         return_value = random.choice(list(voc().get(self.liste_cible).items()))
         return return_value
 
-    def quit_window(self) -> None:
+    def quit_window(self, evt=None) -> None:
         self.window.quit()
         self.window.destroy()
 
@@ -670,7 +691,7 @@ class App:
         self.solut_label["text"] = ""
         self.second_entry["width"] = len(self.answer) + 10
 
-    def give_solution(self) -> None:
+    def give_solution(self, evt=None) -> None:
         self.solut_label["text"] = "{}: {}".format(
                 ("solution", "Lösung")[self.french_first],
                 self.answer
