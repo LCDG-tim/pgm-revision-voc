@@ -215,3 +215,7 @@ Liste à étudier =
                     round(compteur / (i - 1) * 100, 2)
                 )
         )
+
+
+if __name__ == "__main__":
+    revise_voc_in_console()

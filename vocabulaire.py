@@ -675,7 +675,7 @@ def voc() -> dict:
                         "klug": "intelligent",
                         "etwas erfinden": "inventer qqch",
                         "entwickeln": "développer",
-                        "nützlich": "utile",
+                        "nützlich": "utile",    
                         "nutzlos": "inutile",
                         "die Wissenschaft": "la science",
                         "die Wissenschaftler/-in": "le / la scientifique",
@@ -683,7 +683,23 @@ def voc() -> dict:
                         "das Patent": "le brevet industriel",
                         "jn. (nicht) erst nehmen": "(ne pas) prendre qqn au sérieux",
                         "unterschätzen": "sous-estimer"
-                        }
+                        },
+                16.1: {
+                        "einer Community (für das Stadium, die Musik, Videospiele) an/gehören": "appartenir à une communauté (pour les étude, la musique, les jeux vidéos)",
+                        "einen Beitrag leisten": "apporter sa contribution",
+                        "zu etwas bei/tragen": "contribuer à qqch",
+                        "(über eine Gruppe / eine Cloud) Dateien teilen": "partager des fichiers (en passant par un groupe / un cloud)",
+                        "einen Podcast abonnieren": "s’abonner à un podcast", 
+                        "sich bei einem MOOC (Massiv Open Online Course) an/melden": "s’inscrire à un MOOC (cours en ligne)",
+                        "etwas kommentieren": "commenter qqch",
+                        "etwas bewerten": "évaluer qqch",
+                        "online zocken": "jouer en ligne",
+                        "ein Wiki ergänzen": "compléter un wiki",
+                        "ein Wiki verbessern": "améliorer un wiki",
+                        "ein Video drehen": "tourner une vidéo",
+                        "ein Video veröffentlichen": "publier une vidéo",
+                        "sich in / mit etwas (D) gut aus/kennen": "s'y connaître, être expert en qqch"
+                        },
                     }
     assert isinstance(vocabulaire, dict), "vocabulaire n'est pas un dict"
     return vocabulaire
