@@ -46,7 +46,7 @@ class App:
     """app de mot de vocabulaire
     """
 
-    def __init__(self, *args) -> None:
+    def __init__(self) -> None:
         # =====================================================================
         # init & config window
 
